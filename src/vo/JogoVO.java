@@ -1,35 +1,44 @@
 package vo;
 
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-
 import vo.enumerado.TipoClassificacao;
 
 @Entity
 @SequenceGenerator(initialValue = 1, name = "seq_jogo", sequenceName = "seq_jogo")
 public class JogoVO {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_jogo")
 	private Long idJogo;
-
+	
 	private String nome;
 	private String genero;
 	private String imagem;
 	private Double preco;
 	private TipoClassificacao classificacao;
-
+	
 	@ManyToMany(mappedBy = "jogos")
 	private List<UsuarioVO> usuarios;
+	
+	@ManyToMany(mappedBy = "jogos")
+	private List<PedidoVO> pedidos;
 
 	public Long getIdJogo() {
 		return idJogo;
+	}
+
+	public List<PedidoVO> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<PedidoVO> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public void setIdJogo(Long idJogo) {

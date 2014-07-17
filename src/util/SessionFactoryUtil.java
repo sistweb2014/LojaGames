@@ -47,15 +47,27 @@ public class SessionFactoryUtil {
 		sessionFactory = null;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
+		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
 		UsuarioVO vo = new UsuarioVO();
 		vo.setNome("Produto X");
+		
+		UsuarioVO vo2 = new UsuarioVO();
+		vo2.setNome("Produto Y");
+		usuarios.add(vo2);
 		JogoVO jogo = new JogoVO();
 		List<JogoVO> lista = new ArrayList<JogoVO>();
 		vo.setJogos(lista);
+		vo.setChildren(usuarios);
+		
 		Transaction t = s.beginTransaction();
+		usuarios = (List<UsuarioVO>) vo.getChildren();
+		for (UsuarioVO jogoVO : usuarios) {
+			System.out.println(jogoVO.getNome());
+		}
+		s.cre
 		s.save(vo);
 		t.commit();
-	}
+	}*/
 }
