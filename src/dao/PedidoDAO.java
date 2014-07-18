@@ -1,19 +1,20 @@
 package dao;
 
 import vo.JogoVO;
+import vo.PedidoVO;
 import vo.UsuarioVO;
 
-public class JogoDAO extends DAO<JogoVO> {
+public class PedidoDAO extends DAO<PedidoVO> {
 
-private static JogoDAO dao;
+private static PedidoDAO dao;
 	
-	private JogoDAO(Class classe) {
+	private PedidoDAO(Class classe) {
 		super(classe);
 	}
 	// Singleton design pattern applied
-	public static JogoDAO getInstance() {
+	public static PedidoDAO getInstance() {
 		if (dao == null)
-			dao = new JogoDAO(UsuarioVO.class);
+			dao = new PedidoDAO(PedidoVO.class);
 		return dao;
 	}
 	

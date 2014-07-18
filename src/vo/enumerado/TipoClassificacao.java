@@ -8,6 +8,14 @@ public enum TipoClassificacao {
 	private Double estrela;
 	
 	private TipoClassificacao(Double estrela) {
+		this.setEstrela(estrela);
+	}
+
+	public Double getEstrela() {
+		return estrela;
+	}
+
+	public void setEstrela(Double estrela) {
 		this.estrela = estrela;
 	}
 	
