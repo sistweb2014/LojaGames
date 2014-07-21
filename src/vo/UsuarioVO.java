@@ -40,7 +40,7 @@ public class UsuarioVO {
 	@OneToMany(mappedBy="parent")
 	private Collection<UsuarioVO> children;
 	
-	@ManyToOne(targetEntity=PedidoVO.class)
+	@OneToMany(targetEntity=PedidoVO.class)
 	@JoinColumn(name="idPedido")
 	private List<PedidoVO> pedidos;
 

@@ -1,7 +1,7 @@
 package vo;
 
 import java.util.List;
-/** Modificação  */
+
 public class PresenteVO {
 	private UsuarioVO comprador, presenteado;
 	private JogoVO jogo;
