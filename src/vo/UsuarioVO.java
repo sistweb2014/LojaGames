@@ -2,6 +2,7 @@ package vo;
 
 import java.util.Collection;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,8 +29,9 @@ public class UsuarioVO {
 	private Boolean estadoLogado;
 	private Double credito;
 
-	@ManyToMany
-	@JoinTable(name = "usuario_jogo")
+	@ManyToMany(targetEntity=JogoVO.class)
+	@JoinTable(name = "usuario_jogo", joinColumns={@JoinColumn(name="idUsuario")}, inverseJoinColumns=
+  {@JoinColumn(name="idJogo")})
 	private List<JogoVO> jogos;
 	
 	@ManyToOne
@@ -38,7 +40,7 @@ public class UsuarioVO {
 	@OneToMany(mappedBy="parent")
 	private Collection<UsuarioVO> children;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity=PedidoVO.class)
 	@JoinColumn(name="idPedido")
 	private List<PedidoVO> pedidos;
 
