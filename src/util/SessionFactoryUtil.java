@@ -47,7 +47,7 @@ public class SessionFactoryUtil {
 		sessionFactory = null;
 	}
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
 		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
 		UsuarioVO vo = new UsuarioVO();
@@ -66,8 +66,7 @@ public class SessionFactoryUtil {
 		for (UsuarioVO jogoVO : usuarios) {
 			System.out.println(jogoVO.getNome());
 		}
-		s.cre
 		s.save(vo);
 		t.commit();
-	}*/
+	}
 }
