@@ -15,5 +15,6 @@
   		<property name="hibernate.hbm2ddl.auto">update</property>
   		<mapping class="vo.UsuarioVO"/>
   		<mapping class="vo.JogoVO"/>
+  		
     </session-factory>
 </hibernate-configuration>
