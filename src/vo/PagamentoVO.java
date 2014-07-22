@@ -20,7 +20,7 @@ public class PagamentoVO {
 	private TipoPagamento tipoPagamento;
 	private Date datapagamento;
 
-	@OneToOne(mappedBy="endereco")
+	@OneToOne
 	private PedidoVO pedido;
 
 	public Long getIdPagamento() {

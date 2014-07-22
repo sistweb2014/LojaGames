@@ -29,7 +29,7 @@ public class PedidoVO {
 	private Date dataPedido;
 	private  Double valorTotal;
 	
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name = "idUsuario")
 	private UsuarioVO usuario;
 	
