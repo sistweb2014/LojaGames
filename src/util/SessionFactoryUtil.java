@@ -11,7 +11,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import vo.JogoVO;
+import vo.PedidoVO;
 import vo.UsuarioVO;
+import vo.enumerado.TipoPedido;
 
 public class SessionFactoryUtil {
 
@@ -49,24 +51,30 @@ public class SessionFactoryUtil {
 
 	public static void main(String[] args) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
-		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
+
 		UsuarioVO vo = new UsuarioVO();
 		vo.setNome("Produto X");
 		
-		UsuarioVO vo2 = new UsuarioVO();
-		vo2.setNome("Produto Y");
-		usuarios.add(vo2);
 		JogoVO jogo = new JogoVO();
+		jogo.setNome("Half-Life 2");
 		List<JogoVO> lista = new ArrayList<JogoVO>();
-		vo.setJogos(lista);
-		vo.setChildren(usuarios);
+		lista.add(jogo);
+		
+		PedidoVO pedido = new PedidoVO();
+		pedido.setJogos(lista);
+		pedido.setTipoPedido(TipoPedido.COMPRA);
 		
 		Transaction t = s.beginTransaction();
-		usuarios = (List<UsuarioVO>) vo.getChildren();
-		for (UsuarioVO jogoVO : usuarios) {
-			System.out.println(jogoVO.getNome());
-		}
+//		usuarios = (List<UsuarioVO>) vo.getChildren();
+//		for (UsuarioVO jogoVO : usuarios) {
+//			System.out.println(jogoVO.getNome());
+//		}
 		s.save(vo);
+//		UsuarioVO vo = UsuarioDAO.getInstance().getById(50);
+		pedido.setUsuario(vo);
+		
+		s.save(pedido);
+		
 		t.commit();
 	}
 }

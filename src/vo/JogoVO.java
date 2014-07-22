@@ -1,12 +1,15 @@
 package vo;
 
 import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+
 import vo.enumerado.TipoClassificacao;
 
 @Entity
@@ -23,10 +26,10 @@ public class JogoVO {
 	private Double preco;
 	private TipoClassificacao classificacao;
 	
-	@ManyToMany(mappedBy = "jogos")
+	@ManyToMany(mappedBy = "jogos", fetch = FetchType.LAZY)
 	private List<UsuarioVO> usuarios;
 	
-	@ManyToMany(mappedBy = "jogos")
+	@ManyToMany(mappedBy = "jogos", fetch = FetchType.LAZY)
 	private List<PedidoVO> pedidos;
 
 	public Long getIdJogo() {
