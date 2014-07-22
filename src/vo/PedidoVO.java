@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -27,7 +27,7 @@ public class PedidoVO {
 	private Date dataPedido;
 	private  Double valorTotal;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private UsuarioVO usuario;
 	

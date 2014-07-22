@@ -5,4 +5,143 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+	<navigation-rule>
+		<from-view-id>modulo1/inicial.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>modulo1/perfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>crud_jogo</from-outcome>
+			<to-view-id>modulo1/crud_jogo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>modulo1/compra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>presente</from-outcome>
+			<to-view-id>modulo1/presente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>modulo1/perfil.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inicial</from-outcome>
+			<to-view-id>modulo1/inicial.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>crud_jogo</from-outcome>
+			<to-view-id>modulo1/crud_jogo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>modulo1/compra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>presente</from-outcome>
+			<to-view-id>modulo1/presente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>modulo1/crud_jogo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>modulo1/perfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>inicial</from-outcome>
+			<to-view-id>modulo1/inicial.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>modulo1/compra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>presente</from-outcome>
+			<to-view-id>modulo1/presente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>modulo1/compra.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>modulo1/perfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>crud_jogo</from-outcome>
+			<to-view-id>modulo1/crud_jogo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>inicial</from-outcome>
+			<to-view-id>modulo1/inicial.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>presente</from-outcome>
+			<to-view-id>modulo1/presente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>modulo1/presente.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>modulo1/perfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>crud_jogo</from-outcome>
+			<to-view-id>modulo1/crud_jogo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>modulo1/compra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>inicial</from-outcome>
+			<to-view-id>modulo1/inicial.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+	</navigation-rule>
+
 </faces-config>
