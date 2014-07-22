@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+	<h:head>
+		<title>Sistema de Compra de Jogos</title>
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="main.css" />
+	</h:head> 
+	
+	<h:body>
+	
+		<!-- Cabeçalho da Página -->
+		<h:form>
+					
+			<div class="mainmenu-wrapper">
+		        <div class="container">
+		        	<div class="menuextras">
+		        		
+		        		<!-- Links de carrinho e login/cadastro -->
+						<div class="extras">
+							<ul>
+								<li>
+									<h:commandLink update="growl" action="carrinho">
+										<h:graphicImage library="img" name="cart.gif" />
+									<h:outputText value="Item" />
+									</h:commandLink>
+								</li>
+								
+				        		<li>
+				        			<h:commandLink styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario">
+				        				<h:outputText style="color: #FFFFFF;" value="Login/Cadastro" />
+				        			</h:commandLink>
+				        		</li>
+				        	</ul>
+						</div>
+			        </div>
+			        
+			        <!-- Menu com os links para as páginas da aplicação -->
+			         <nav id="mainmenu" class="mainmenu">
+						<ul>
+							<li class="logo-wrapper">
+								<!-- Logo -->
+								<h:commandLink action="inicial">
+									<h:graphicImage library="img" name="logo.png" />
+								</h:commandLink>
+							</li>
+							
+							<li>
+								<!-- Página Inicial -->
+								<h:commandLink value="Home" action="inicial" />
+							</li>
+							
+							<li>
+								<!-- Página Perfil de Usuário -->
+								<h:commandLink value="Perfil do Usuário" action="perfil" />
+							</li>
+							
+							<li>
+								<!-- Página Cadastro de Jogo -->
+								<h:commandLink value="Cadastro do Jogo" action="crud_jogo" />
+							</li>
+							
+							<li>
+								<!-- Página Compra de Jogo -->
+								<h:commandLink value="Compra do Jogo" action="compra" />
+							</li>
+							
+							<li>
+								<!-- Página Presentear Jogo -->
+								<h:commandLink value="Presentear Jogo" action="presente" />
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			
+		</h:form>
+		<!-- Fim do Cabeçalho da Página -->
+		
+		
+		<!-- Será dentro desta tag div onde cada grupo efetuará sua implementação -->
+		<div id="ConteudoIndividualDoSistema">			
+			
+			<ui:insert name="template" />
+			
+		</div>
+		<!-- Fim da implementação -->
+		
+		
+		<!-- Rodapé da Página -->
+	    <div class="footer">
+	    	<div class="container">
+		    	<div class="row">
+		    	
+		    		<!-- Link demonstrativo para a Página Inicial do Sistema da Steam -->
+		    		<div class="col-footer col-md-3 col-xs-6">
+		    			<h3>Nosso Último Trabalho</h3>
+		    			<div class="portfolio-item">
+							<div class="portfolio-image">
+								<h:outputLink value="http://store.steampowered.com/"><h:graphicImage library="img" name="portfolio.jpg" /></h:outputLink>
+							</div>
+						</div>
+		    		</div>
+		    		
+		    		<!-- Link demonstrativo simulação de serviços externos presente no sistema atual -->
+		    		<div class="col-footer col-md-3 col-xs-6">
+		    			<h3>Navegação</h3>
+		    			<ul class="no-list-style footer-navigate-section">
+		    				<li><h:outputLink value="http://www.cba.ifmt.edu.br/">Blog</h:outputLink></li>
+		    				<li><h:outputLink value="http://www.cba.ifmt.edu.br/">Portfolio</h:outputLink></li>
+		    				<li><h:outputLink value="http://www.cba.ifmt.edu.br/">Serviços</h:outputLink></li>
+		    				<li><h:outputLink value="http://www.cba.ifmt.edu.br/">FAQ</h:outputLink></li>
+		    			</ul>
+		    		</div>
+		    		
+		    		<!-- Link demonstrativo para a empresa fornecedorá do presente sistema -->
+		    		<div class="col-footer col-md-4 col-xs-6">
+		    			<h3>Contatos</h3>
+		    			<p class="contact-us-details">
+	        				<b>Endereço:</b> DAI Laboratório 5 matutino, IFMT, Cuiabá, Brasil<br/>
+	        				<b>Telefone:</b> +55 65 3318-1400<br/>
+	        				<b>Email:</b> <h:outputLink value="mailto:sistweb2012@hotmail.com"> sistweb2012@hotmail.com</h:outputLink>
+	        			</p>
+		    		</div>
+
+		    	</div>
+		    	<div class="row">
+		    		<div class="col-md-12">
+		    		
+		    			<!-- Direitos Autorais -->
+		    			<div class="footer-copyright">&copy; 2014 Loja de Games. Todos direitos reservados.</div>
+		    			
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+	    <!-- Fim do Rodapé da Página -->
+		
+	</h:body> 
+</html>
