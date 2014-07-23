@@ -42,8 +42,16 @@ public class UsuarioVO {
 	private Collection<UsuarioVO> children;
 	
 	@OneToMany(targetEntity=PedidoVO.class)
-	@JoinColumn(name="usuarios_id")
+	@JoinColumn(name="usuario_id")
 	private List<PedidoVO> pedidos;
+
+	public List<PedidoVO> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<PedidoVO> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public UsuarioVO getParent() {
 		return parent;
