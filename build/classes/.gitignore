@@ -1,5 +1,6 @@
-/dao/
+/dao
 /hibernate.cfg.xml
-/negocio/
-/util/
-/vo/
+/negocio
+/util
+/vo
+/controle

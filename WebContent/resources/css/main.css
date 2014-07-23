@@ -104,6 +104,16 @@ a {
 a:hover {
   color: #2f556d;
 }
+
+#formLogin {
+	margin-left: 50px;
+	margin-right: 150px;
+}
+
+#formCadastro {
+	width: 500px;
+}
+
 /*--------------------------------------------------------------------------
 +	Services Style
 --------------------------------------------------------------------------*/
@@ -2671,3 +2681,4 @@ span.color-red {
 .dropdown.open a.dropdown-toggle .caret {
   border-top: 4px solid #FFF;
 }
+
