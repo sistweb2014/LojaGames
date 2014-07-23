@@ -2,10 +2,10 @@ package vo;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import util.EncripitarSenha;
+import vo.excecao.UsuarioVOException;
 
 @Entity
 @SequenceGenerator(initialValue = 1, name = "seq_usuario", sequenceName = "seq_usuario")
@@ -31,27 +34,19 @@ public class UsuarioVO {
 	private Boolean estadoLogado;
 	private Double credito;
 
-	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "usuarios_jogos")
+	@ManyToMany
+	@JoinTable(name = "usuario_jogo")
 	private List<JogoVO> jogos;
-	
+
 	@ManyToOne
 	private UsuarioVO parent;
-	
-	@OneToMany(mappedBy="parent")
+
+	@OneToMany(mappedBy = "parent")
 	private Collection<UsuarioVO> children;
-	
-	@OneToMany(targetEntity=PedidoVO.class)
-	@JoinColumn(name="usuario_id")
+
+	@ManyToOne
+	@JoinColumn(name = "idPedido")
 	private List<PedidoVO> pedidos;
-
-	public List<PedidoVO> getPedidos() {
-		return pedidos;
-	}
-
-	public void setPedidos(List<PedidoVO> pedidos) {
-		this.pedidos = pedidos;
-	}
 
 	public UsuarioVO getParent() {
 		return parent;
@@ -81,7 +76,10 @@ public class UsuarioVO {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws UsuarioVOException {
+		if(nome.isEmpty())
+			throw new UsuarioVOException(UsuarioVOException.NOMEOBRIGATORIO);
+		
 		this.nome = nome;
 	}
 
@@ -89,24 +87,30 @@ public class UsuarioVO {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(String login) throws UsuarioVOException {
+		if(login.isEmpty())
+			throw new UsuarioVOException(UsuarioVOException.LOGINOBRIGATORIO);
+		
 		this.login = login;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSenha(String senha) throws UsuarioVOException {
+		if(senha.isEmpty())
+			throw new UsuarioVOException(UsuarioVOException.SENHAOBRIGATORIO);
+		
+		this.senha = EncripitarSenha.encriptar(senha);
 	}
 
 	public Boolean getEstadoLogado() {
@@ -133,6 +137,13 @@ public class UsuarioVO {
 		this.jogos = jogos;
 	}
 	
+	public boolean validarEmail(String email) {
+		Pattern p = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+		Matcher m = p.matcher(email);
+
+		return m.find();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -141,21 +152,27 @@ public class UsuarioVO {
 				+ ((idUsuario == null) ? 0 : idUsuario.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		
 		if (obj == null)
 			return false;
+		
 		if (getClass() != obj.getClass())
 			return false;
+		
 		UsuarioVO other = (UsuarioVO) obj;
+		
 		if (idUsuario == null) {
 			if (other.idUsuario != null)
 				return false;
+			
 		} else if (!idUsuario.equals(other.idUsuario))
 			return false;
+		
 		return true;
 	}
 
