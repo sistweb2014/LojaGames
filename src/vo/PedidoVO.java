@@ -28,7 +28,7 @@ public class PedidoVO {
 	private  Double valorTotal;
 	
 	@ManyToOne
-	@JoinColumn(name = "idUsuario")
+	@JoinColumn(name = "usuario_id")
 	private UsuarioVO usuario;
 	
 	@ManyToMany
@@ -37,7 +37,7 @@ public class PedidoVO {
 	
 	@OneToOne
 	private PagamentoVO pagamento;
-
+	
 	public Long getIdPedido() {
 		return idPedido;
 	}

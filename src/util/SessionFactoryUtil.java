@@ -54,16 +54,16 @@ public class SessionFactoryUtil {
 
 		UsuarioVO vo = new UsuarioVO();
 		vo.setNome("Produto X");
-		
+
 		JogoVO jogo = new JogoVO();
 		jogo.setNome("Half-Life 2");
 		List<JogoVO> lista = new ArrayList<JogoVO>();
 		lista.add(jogo);
-		
+
 		PedidoVO pedido = new PedidoVO();
 		pedido.setJogos(lista);
 		pedido.setTipoPedido(TipoPedido.COMPRA);
-		
+
 		Transaction t = s.beginTransaction();
 //		usuarios = (List<UsuarioVO>) vo.getChildren();
 //		for (UsuarioVO jogoVO : usuarios) {
@@ -72,9 +72,9 @@ public class SessionFactoryUtil {
 		s.save(vo);
 //		UsuarioVO vo = UsuarioDAO.getInstance().getById(50);
 		pedido.setUsuario(vo);
-		
+
 		s.save(pedido);
-		
+
 		t.commit();
 	}
 }
