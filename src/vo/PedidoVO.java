@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -28,16 +30,25 @@ public class PedidoVO {
 	private Date dataPedido;
 	private  Double valorTotal;
 	
-	@OneToOne
-	@JoinColumn(name = "idUsuario")
+	public PagamentoVO getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(PagamentoVO pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
 	private UsuarioVO usuario;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "pedido_jogo")
 	private List<JogoVO> jogos;
 	
 	@OneToOne
 	private PagamentoVO pagamento;
-
+	
 	public Long getIdPedido() {
 		return idPedido;
 	}
@@ -84,6 +95,32 @@ public class PedidoVO {
 
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
-	} 
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((idPedido == null) ? 0 : idPedido.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PedidoVO other = (PedidoVO) obj;
+		if (idPedido == null) {
+			if (other.idPedido != null)
+				return false;
+		} else if (!idPedido.equals(other.idPedido))
+			return false;
+		return true;
+	}
 	
 }

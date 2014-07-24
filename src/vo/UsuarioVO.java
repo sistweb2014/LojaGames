@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,6 +32,7 @@ public class UsuarioVO {
 	private Double credito;
 
 	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "usuarios_jogos")
 	private List<JogoVO> jogos;
 	
 	@ManyToOne
@@ -40,8 +42,16 @@ public class UsuarioVO {
 	private Collection<UsuarioVO> children;
 	
 	@OneToMany(targetEntity=PedidoVO.class)
-	@JoinColumn(name="idPedido")
+	@JoinColumn(name="usuario_id")
 	private List<PedidoVO> pedidos;
+
+	public List<PedidoVO> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<PedidoVO> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public UsuarioVO getParent() {
 		return parent;
