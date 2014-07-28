@@ -1,6 +1,8 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import negocio.Pedido;
@@ -54,42 +56,22 @@ public class SessionFactoryUtil {
 	}
 
 	public static void main(String[] args) {
-		Session s = SessionFactoryUtil.getInstance().openSession();
-		UsuarioVO vo = new UsuarioVO();
-		vo.setNome("Produto TESTE");
+		Session s = SessionFactoryUtil.getInstance().openSession();	
+		UsuarioVO usurio01 = new UsuarioVO();
+		usurio01.setNome("Nome01");
 		
-		JogoVO jogoVO = new JogoVO();
-		jogoVO.setNome("TESTE");
+		UsuarioVO usurio02 = new UsuarioVO();
+		usurio02.setNome("Nome02");
 		
-		PedidoVO pedidoVO = new PedidoVO();
-		pedidoVO.setTipoPedido(TipoPedido.COMPRA);
+		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
+		usuarios.add(usurio02);
 		
-		PagamentoVO pagamentoVO = new PagamentoVO();
-		pagamentoVO.setPedido(pedidoVO);
-		pedidoVO.setPagamento(pagamentoVO);
-
-		List<JogoVO> listaJogo = new ArrayList<JogoVO>();
-		listaJogo.add(jogoVO);
+		usurio01.setAmigos(usuarios);
 		
-		List<UsuarioVO> listaUsuario= new ArrayList<UsuarioVO>();
-		listaUsuario.add(vo);
-		
-		List<PedidoVO> listaPedido = new ArrayList<PedidoVO>();
-		listaPedido.add(pedidoVO);
-		
-		vo.setJogos(listaJogo);
-		vo.setPedidos(listaPedido);
-		
-		jogoVO.setUsuarios(listaUsuario);
-		
+		s.save(usurio01);
+		s.save(usurio02);
 		Transaction t = s.beginTransaction();
-		s.save(vo);
-		s.save(jogoVO);
-		s.save(pedidoVO);
-		s.save(pagamentoVO);
 		t.commit();
-		
-		System.out.println(vo.getJogos().size());
-		System.out.println(vo.getJogos().get(0).getNome());
+
 	}
 }
