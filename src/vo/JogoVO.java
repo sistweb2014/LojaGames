@@ -17,7 +17,7 @@ import vo.enumerado.TipoClassificacao;
 public class JogoVO {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_jogo")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_jogo")
 	private Long idJogo;
 	
 	private String nome;

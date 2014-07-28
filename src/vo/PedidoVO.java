@@ -21,7 +21,7 @@ import vo.enumerado.TipoPedido;
 public class PedidoVO {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pedido")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pedido")
 	private Long idPedido;
 	
 	private TipoPedido tipoPedido;

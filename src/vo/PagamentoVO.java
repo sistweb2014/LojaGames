@@ -16,7 +16,7 @@ import vo.enumerado.TipoPagamento;
 public class PagamentoVO {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pagamento")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pagamento")
 	private Long idPagamento;
 
 	private TipoPagamento tipoPagamento;
