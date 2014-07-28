@@ -38,31 +38,13 @@ public class UsuarioVO {
 	@JoinTable(name = "usuario_jogo")
 	private List<JogoVO> jogos;
 
-	@ManyToOne
-	private UsuarioVO parent;
-
-	@OneToMany(mappedBy = "parent")
-	private Collection<UsuarioVO> children;
+	@ManyToMany
+	@JoinTable(name = "usuario_seguidores", joinColumns = { @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario") }, inverseJoinColumns = { @JoinColumn(name = "idSeguidor", referencedColumnName = "idUsuario") })
+	private List<UsuarioVO> amigos;
 
 	@ManyToOne
 	@JoinColumn(name = "idPedido")
 	private List<PedidoVO> pedidos;
-
-	public UsuarioVO getParent() {
-		return parent;
-	}
-
-	public void setParent(UsuarioVO parent) {
-		this.parent = parent;
-	}
-
-	public Collection<UsuarioVO> getChildren() {
-		return children;
-	}
-
-	public void setChildren(Collection<UsuarioVO> children) {
-		this.children = children;
-	}
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -77,9 +59,6 @@ public class UsuarioVO {
 	}
 
 	public void setNome(String nome) throws UsuarioVOException {
-		if(nome.isEmpty())
-			throw new UsuarioVOException(UsuarioVOException.NOMEOBRIGATORIO);
-		
 		this.nome = nome;
 	}
 
@@ -88,16 +67,13 @@ public class UsuarioVO {
 	}
 
 	public void setLogin(String login) throws UsuarioVOException {
-		if(login.isEmpty())
-			throw new UsuarioVOException(UsuarioVOException.LOGINOBRIGATORIO);
-		
 		this.login = login;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -107,9 +83,6 @@ public class UsuarioVO {
 	}
 
 	public void setSenha(String senha) throws UsuarioVOException {
-		if(senha.isEmpty())
-			throw new UsuarioVOException(UsuarioVOException.SENHAOBRIGATORIO);
-		
 		this.senha = EncripitarSenha.encriptar(senha);
 	}
 
@@ -136,14 +109,15 @@ public class UsuarioVO {
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
 	}
-	
+
 	public boolean validarEmail(String email) {
-		Pattern p = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+		Pattern p = Pattern
+				.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
 		Matcher m = p.matcher(email);
 
 		return m.find();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -157,22 +131,22 @@ public class UsuarioVO {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		
+
 		if (obj == null)
 			return false;
-		
+
 		if (getClass() != obj.getClass())
 			return false;
-		
+
 		UsuarioVO other = (UsuarioVO) obj;
-		
+
 		if (idUsuario == null) {
 			if (other.idUsuario != null)
 				return false;
-			
+
 		} else if (!idUsuario.equals(other.idUsuario))
 			return false;
-		
+
 		return true;
 	}
 
