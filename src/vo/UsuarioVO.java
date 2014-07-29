@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import util.EncripitarSenha;
 import vo.excecao.UsuarioVOException;
 
 @Entity
@@ -42,7 +39,7 @@ public class UsuarioVO {
 	@JoinTable(name = "usuario_seguidores", joinColumns = { @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario") }, inverseJoinColumns = { @JoinColumn(name = "idSeguidor", referencedColumnName = "idUsuario") })
 	private List<UsuarioVO> amigos;
 
-	@ManyToOne
+	@OneToMany(targetEntity=PedidoVO.class)
 	@JoinColumn(name = "idPedido")
 	private List<PedidoVO> pedidos;
 
@@ -83,7 +80,7 @@ public class UsuarioVO {
 	}
 
 	public void setSenha(String senha) throws UsuarioVOException {
-		this.senha = EncripitarSenha.encriptar(senha);
+		this.senha = senha;
 	}
 
 	public Boolean getEstadoLogado() {

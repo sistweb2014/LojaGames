@@ -16,12 +16,14 @@ public class UsuarioControle {
 
 	private Usuario usuario;
 	private UsuarioVO vo;
-	
+	private String login;
+	private String senha;
+
 	public UsuarioControle() {
 		usuario = new Usuario();
 		vo = new UsuarioVO();
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -36,6 +38,33 @@ public class UsuarioControle {
 
 	public void setVo(UsuarioVO vo) {
 		this.vo = vo;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public void login(ActionEvent event) {
+		try {
+			vo = usuario.getByLoginSenha(login, senha);
+			FacesContext.getCurrentInstance().addMessage("formLogin",
+					new FacesMessage("Usuário " + login + "logado com sucesso!"));
+		} catch (UsuarioVOException e) {
+			FacesContext.getCurrentInstance().addMessage("formLogin",
+					new FacesMessage(e.getMessage()));
+		}
 	}
 
 	public void cadastrarUsuario(ActionEvent event) {

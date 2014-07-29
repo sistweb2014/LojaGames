@@ -19,17 +19,26 @@
 		 					<h1>Login</h1>
 		 					<h4>Inicie a sessão com uma conta existente na Purpose.</h4>
 			                    <h:outputLabel value="Nome de usuário"></h:outputLabel>
-			                    <p:inputText id="nome" label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
+			                    <p:inputText id="nome" label="Nome" value="#{usuarioControle.login}"
+			                    required="true" requiredMessage="O Campo Nome é obrigatório.">
 			                    </p:inputText>
 			 				<p:separator/>	
 	
 								<h:outputLabel value="Senha"></h:outputLabel>
-			                    <p:inputText id="senha" label="Senha" required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
+			                    <p:inputText id="senha" label="Senha" value="#{usuarioControle.senha}"
+			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
 			                    </p:inputText>
 			 				<p:separator/>	
 						</h:panelGrid>
 		 
-		                <p:commandButton value="Logar"></p:commandButton>
+		                <p:commandButton
+		                		value="Logar"
+		                		update=":formLogin"
+		                		actionListener="#{usuarioControle.login}">
+		                </p:commandButton>
+		 				<br />
+		 					<h:message for="formLogin" style="color:red;"/>
+		 				<br />
 		         </h:form>
 		 	
 				
@@ -87,6 +96,7 @@
 		 
 		                <p:commandButton
 		                	value="Cadastrar"
+		                	update=":formCadastro"
 		                	actionListener="#{usuarioControle.cadastrarUsuario}">
 		                	</p:commandButton>
 		         </h:form>
