@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -30,16 +28,16 @@ public class UsuarioVO {
 	private String email;
 	private Boolean estadoLogado;
 	private Double credito;
-
+	
+	
 	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuarios_jogos")
 	private List<JogoVO> jogos;
 	
-	@ManyToOne
-	private UsuarioVO parent;
-	
-	@OneToMany(mappedBy="parent")
-	private Collection<UsuarioVO> children;
+	@ManyToMany
+	@JoinTable(name="usuario_seguidores",joinColumns={@JoinColumn(name="idUsuario",referencedColumnName="idUsuario")},
+	inverseJoinColumns={@JoinColumn(name="idSeguidor",referencedColumnName="idUsuario")})
+	private List<UsuarioVO> amigos;
 	
 	@OneToMany(targetEntity=PedidoVO.class)
 	@JoinColumn(name="usuario_id")
@@ -53,20 +51,12 @@ public class UsuarioVO {
 		this.pedidos = pedidos;
 	}
 
-	public UsuarioVO getParent() {
-		return parent;
+	public List<UsuarioVO> getAmigos() {
+		return amigos;
 	}
 
-	public void setParent(UsuarioVO parent) {
-		this.parent = parent;
-	}
-
-	public Collection<UsuarioVO> getChildren() {
-		return children;
-	}
-
-	public void setChildren(Collection<UsuarioVO> children) {
-		this.children = children;
+	public void setAmigos(List<UsuarioVO> amigos) {
+		this.amigos = amigos;
 	}
 
 	public Long getIdUsuario() {

@@ -3,8 +3,6 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-import negocio.Pedido;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,12 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import vo.JogoVO;
-import vo.PagamentoVO;
-import vo.PedidoVO;
 import vo.UsuarioVO;
-import vo.enumerado.TipoPagamento;
-import vo.enumerado.TipoPedido;
 
 public class SessionFactoryUtil {
 
@@ -55,40 +48,31 @@ public class SessionFactoryUtil {
 
 	public static void main(String[] args) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
-		UsuarioVO vo = new UsuarioVO();
-		vo.setNome("Produto TESTE");
+		UsuarioVO user = new UsuarioVO();
+		user.setNome("Usuario1");
 		
-		JogoVO jogoVO = new JogoVO();
-		jogoVO.setNome("TESTE");
-		
-		PedidoVO pedidoVO = new PedidoVO();
-		pedidoVO.setTipoPedido(TipoPedido.COMPRA);
-		
-		PagamentoVO pagamentoVO = new PagamentoVO();
-		pagamentoVO.setPedido(pedidoVO);
+		UsuarioVO user2 = new UsuarioVO();
+		user2.setNome("Usuario2");
 
-		List<JogoVO> listaJogo = new ArrayList<JogoVO>();
-		listaJogo.add(jogoVO);
+		UsuarioVO user3 = new UsuarioVO();
+		user3.setNome("Usuario3");
 		
-		List<UsuarioVO> listaUsuario= new ArrayList<UsuarioVO>();
-		listaUsuario.add(vo);
+		List<UsuarioVO> amigos = new ArrayList<UsuarioVO>();
+		amigos.add(user);
+		amigos.add(user2);
+		amigos.add(user3);
 		
-		List<PedidoVO> listaPedido = new ArrayList<PedidoVO>();
-		listaPedido.add(pedidoVO);
+		UsuarioVO user4 = new UsuarioVO();
+		user4.setNome("Usuario4");
+		user4.setAmigos(amigos);
 		
-		vo.setJogos(listaJogo);
-		vo.setPedidos(listaPedido);
-		
-		jogoVO.setUsuarios(listaUsuario);
 		
 		Transaction t = s.beginTransaction();
-		s.save(vo);
-		s.save(jogoVO);
-		s.save(pedidoVO);
-		s.save(pagamentoVO);
-		t.commit();
+		s.save(user);
+		s.save(user2);
+		s.save(user3);
+		s.save(user4);
 		
-		System.out.println(vo.getJogos().size());
-		System.out.println(vo.getJogos().get(0).getNome());
+		t.commit();
 	}
 }
