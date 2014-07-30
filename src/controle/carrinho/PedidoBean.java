@@ -21,6 +21,7 @@ import vo.excecao.UsuarioVOException;
 @SessionScoped
 public class PedidoBean {
 
+
 	private PedidoVO pedidoVO = new PedidoVO();
 	private List<JogoVO> jogos = new ArrayList<JogoVO>();
 	
@@ -32,15 +33,15 @@ public class PedidoBean {
 	
 	public PedidoBean() {
 		total = 0;
+		tipoPedido = TipoPedido.COMPRA;
 	}
 	
+	public TipoPedido getTipoCompra(){return TipoPedido.COMPRA;}
+	public TipoPedido getTipoPresente(){return TipoPedido.PRESENTE;}
+	
 	public String adicionaJogo(JogoVO jogo) {
-		System.out.println(usuarioLogado.getLogin()+"\n");
-		System.out.println(usuarioLogado.getCredito()+"\n");
 		if (usuarioLogado.getCredito() > (total+jogo.getPreco())) {
 			total += jogo.getPreco();
-			System.out.println(total+"\n");
-			System.out.println(jogo.getNome());
 			jogos.add(jogo);
 		}else{
 			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
@@ -72,7 +73,7 @@ public class PedidoBean {
 		}
 	}
 
-	public void finalizarPedido() {
+	public String finalizarPedido() {
 		Usuario usuario = new Usuario();
 		try {
 			if(tipoPedido.equals(TipoPedido.COMPRA)) {
@@ -85,13 +86,19 @@ public class PedidoBean {
 				usuario.save(usuarioPresenteado);
 				usuario.save(usuarioLogado);
 			}
+			return null;
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(e.getMessage()));
+			return "carrinho";
 		}
 	}
 
 	public void setUsuarioLogado(UsuarioVO usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
+	}
+
+	public UsuarioVO getUsuarioLogado() {
+		return usuarioLogado;
 	}
 
 	public PedidoVO getPedido() {

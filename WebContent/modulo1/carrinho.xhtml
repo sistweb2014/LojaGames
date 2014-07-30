@@ -35,22 +35,39 @@
 					</h:form>
 				</p:column>
 			</p:dataTable>
-			<p:dataTable value="#{pedidoBean.total}" var="5">
+			<p:dataTable value="#{pedidoBean.total}" var="4">
 				<p:columnGroup type="header">
 					<p:row>
-						<p:column colspan="4"></p:column>
+						<p:column colspan="1"></p:column>
+						<p:column colspan="1">
+							<f:facet name="header">Para</f:facet>
+						</p:column>
 						<p:column colspan="1">
 							<f:facet name="header">Total</f:facet>
 						</p:column>
 					</p:row>
 				</p:columnGroup>
 				<p:column>
-					<h:outputText value="teste" />
+					<p:selectOneRadio value="#{pedidoBean.tipoPedido}" style="text-align: left;">
+						<f:selectItem itemLabel="Compra" itemValue="#{pedidoBean.tipoCompra}" />
+						<f:selectItem itemLabel="Presente" itemValue="#{pedidoBean.tipoPresente}"/>
+					</p:selectOneRadio>
+				</p:column>
+				<p:column>
+					<p:selectOneListbox value="#{pedidoBean.usuarioPresenteado}" var="up">
+						<f:selectItems value="#{pedidoBean.usuarioLogado.amigos}" />
+						<p:column>
+							<h:outputText value="#{up.nome}" />
+						</p:column>
+					</p:selectOneListbox>
 				</p:column>
 				<p:column>
 					<h:outputText value="#{pedidoBean.total}">
 						<f:convertNumber type="currency" currencySymbol="R$"/>
 					</h:outputText>
+				</p:column>
+				<p:column>
+					<p:commandButton value="finalizar pedido" />
 				</p:column>
 			</p:dataTable>
 		
