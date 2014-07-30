@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -22,24 +23,30 @@ public class PedidoBean {
 
 	private PedidoVO pedidoVO = new PedidoVO();
 	private List<JogoVO> jogos = new ArrayList<JogoVO>();
-	private UsuarioVO usuarioLogado = new UsuarioVO();
-	private UsuarioVO usuarioPresenteado = new UsuarioVO();
+	
+	@ManagedProperty(value="#{usuarioControle.vo}")
+	private UsuarioVO usuarioLogado;
+	private UsuarioVO usuarioPresenteado;
 	private TipoPedido tipoPedido;
 	private double total;
 	
 	public PedidoBean() {
-		
+		total = 0;
 	}
 	
 	public String adicionaJogo(JogoVO jogo) {
-//		if (usuarioLogado.getCredito() < (total+jogo.getPreco())) {
+		System.out.println(usuarioLogado.getLogin()+"\n");
+		System.out.println(usuarioLogado.getCredito()+"\n");
+		if (usuarioLogado.getCredito() > (total+jogo.getPreco())) {
 			total += jogo.getPreco();
+			System.out.println(total+"\n");
+			System.out.println(jogo.getNome());
 			jogos.add(jogo);
-//		}else{
-//			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
-//					new FacesMessage("Crédito insuficiente para adicionar "+jogo.getNome()));
-//		}
-			return "carrinho";
+		}else{
+			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
+					new FacesMessage("Crédito insuficiente para adicionar "+jogo.getNome()));
+		}
+		return "carrinho";
 	}
 	
 	public void removeJogo(JogoVO jogo){
@@ -82,10 +89,6 @@ public class PedidoBean {
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(e.getMessage()));
 		}
 	}
-	
-	public UsuarioVO getUsuarioLogado() {
-		return usuarioLogado;
-	}
 
 	public void setUsuarioLogado(UsuarioVO usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
@@ -105,10 +108,6 @@ public class PedidoBean {
 
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
-	}
-
-	public UsuarioVO getUsuario() {
-		return usuarioPresenteado;
 	}
 
 	public void setUsuario(UsuarioVO usuarioPresenteado) {

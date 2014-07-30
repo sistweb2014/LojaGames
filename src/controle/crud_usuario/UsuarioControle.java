@@ -60,7 +60,7 @@ public class UsuarioControle {
 		try {
 			vo = usuario.getByLoginSenha(login, senha);
 			FacesContext.getCurrentInstance().addMessage("formLogin",
-					new FacesMessage("Usuário " + login + "logado com sucesso!"));
+					new FacesMessage("Usuário " + login + " logado com sucesso!"));
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(e.getMessage()));
@@ -69,6 +69,7 @@ public class UsuarioControle {
 
 	public void cadastrarUsuario(ActionEvent event) {
 		try {
+			vo.setCredito(1000.50);
 			usuario.save(vo);
 			vo = new UsuarioVO();
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
@@ -82,5 +83,4 @@ public class UsuarioControle {
 	public void excluirProduto() {
 		usuario.delete(vo);
 	}
-
 }
