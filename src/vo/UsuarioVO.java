@@ -1,6 +1,8 @@
 package vo;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,9 +21,22 @@ import javax.persistence.SequenceGenerator;
 public class UsuarioVO {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_usuario")
 	private Long idUsuario;
-
+	
+	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "usuarios_jogos")
+	private List<JogoVO> jogos;
+	
+	@OneToMany(targetEntity=PedidoVO.class)
+	@JoinColumn(name="usuario_id")
+	private List<PedidoVO> pedidos;
+	
+	@ManyToMany
+	@JoinTable(name="usuario_seguidores",joinColumns={@JoinColumn(name="idUsuario",referencedColumnName="idUsuario")},
+	inverseJoinColumns={@JoinColumn(name="idSeguidor",referencedColumnName="idUsuario")})
+	private List<UsuarioVO> amigos;
+	
 	private String nome;
 	private String login;
 	private String senha;
@@ -29,26 +44,12 @@ public class UsuarioVO {
 	private Boolean estadoLogado;
 	private Double credito;
 	
-	
-	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "usuarios_jogos")
-	private List<JogoVO> jogos;
-	
-	@ManyToMany
-	@JoinTable(name="usuario_seguidores",joinColumns={@JoinColumn(name="idUsuario",referencedColumnName="idUsuario")},
-	inverseJoinColumns={@JoinColumn(name="idSeguidor",referencedColumnName="idUsuario")})
-	private List<UsuarioVO> amigos;
-	
-	@OneToMany(targetEntity=PedidoVO.class)
-	@JoinColumn(name="usuario_id")
-	private List<PedidoVO> pedidos;
+	public boolean validarEmail(String email) {
+		Pattern p = Pattern
+				.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+		Matcher m = p.matcher(email);
 
-	public List<PedidoVO> getPedidos() {
-		return pedidos;
-	}
-
-	public void setPedidos(List<PedidoVO> pedidos) {
-		this.pedidos = pedidos;
+		return m.find();
 	}
 
 	public List<UsuarioVO> getAmigos() {
@@ -57,6 +58,14 @@ public class UsuarioVO {
 
 	public void setAmigos(List<UsuarioVO> amigos) {
 		this.amigos = amigos;
+	}
+
+	public List<PedidoVO> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<PedidoVO> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public Long getIdUsuario() {
@@ -121,6 +130,12 @@ public class UsuarioVO {
 
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
+	}
+	
+	public void addJogos(List<JogoVO> jogos){
+		for (JogoVO jogo : jogos) {
+			this.jogos.add(jogo);
+		}
 	}
 	
 	@Override
