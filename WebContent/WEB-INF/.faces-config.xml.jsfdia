@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:modulo1#inicial.xhtml"
+  PATH="modulo1/inicial.xhtml" SHAPE="80,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#inicial.xhtml:0" NAME="item"
+   PATH="modulo1/inicial.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output3" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output4" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output5" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#perfil.xhtml"
+  PATH="modulo1/perfil.xhtml" SHAPE="336,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#perfil.xhtml:0" NAME="item"
+   PATH="modulo1/perfil.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output3" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output4" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output5" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#crud_jogo.xhtml"
+  PATH="modulo1/crud_jogo.xhtml" SHAPE="592,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#crud_jogo.xhtml:0" NAME="item"
+   PATH="modulo1/crud_jogo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output1" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output3" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output4" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output5" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#compra.xhtml"
+  PATH="modulo1/compra.xhtml" SHAPE="848,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#compra.xhtml:0" NAME="item"
+   PATH="modulo1/compra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output2" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output3" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output4" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output5" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#presente.xhtml"
+  PATH="modulo1/presente.xhtml" SHAPE="1104,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#presente.xhtml:0" NAME="item"
+   PATH="modulo1/presente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output3" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output5" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output6" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#crud_usuario.xhtml"
+  PATH="modulo1/crud_usuario.xhtml" SHAPE="896,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#crud_usuario.xhtml:0" NAME="item"
+   PATH="modulo1/crud_usuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output3" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output4" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#carrinho.xhtml"
+  PATH="modulo1/carrinho.xhtml" SHAPE="896,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:modulo1#carrinho.xhtml:0" NAME="item"
+   PATH="modulo1/carrinho.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="perfil::modulo1#perfil.xhtml" NAME="output"
+    PATH="modulo1/perfil.xhtml" TARGET="rules:modulo1#perfil.xhtml"
+    TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_jogo::modulo1#crud_jogo.xhtml"
+    NAME="output1" PATH="modulo1/crud_jogo.xhtml"
+    TARGET="rules:modulo1#crud_jogo.xhtml" TITLE="crud_jogo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compra::modulo1#compra.xhtml" NAME="output2"
+    PATH="modulo1/compra.xhtml" TARGET="rules:modulo1#compra.xhtml"
+    TITLE="compra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
+    NAME="output3" PATH="modulo1/inicial.xhtml"
+    TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="presente::modulo1#presente.xhtml"
+    NAME="output4" PATH="modulo1/presente.xhtml"
+    TARGET="rules:modulo1#presente.xhtml" TITLE="presente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crud_usuario::modulo1#crud_usuario.jsp"
+    NAME="output6" PATH="modulo1/crud_usuario.jsp"
+    TARGET="rules:modulo1#crud_usuario.jsp" TITLE="crud_usuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:modulo1#crud_usuario.jsp"
+  PATH="modulo1/crud_usuario.jsp" SHAPE="32,257,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

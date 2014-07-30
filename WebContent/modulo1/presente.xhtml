@@ -8,10 +8,11 @@
 	<ui:composition template="../WEB-INF/template/layout.xhtml">
 		<ui:define name="template">
 			<!-- Implementação do grupo -->
-			
-			<h1>PRESENTE</h1>
-			
+				<h:form>
+					<h1 style="text-align: center;font-size: 20pt; font-family: Sans-serif;">Para presentear alguém você deve estar logado(a).
+						<h:commandLink value="Clique aqui para logar" action="crud_usuario"/>
+					</h1>
+				</h:form>
 		</ui:define>
 	</ui:composition>
-	
 </html>
