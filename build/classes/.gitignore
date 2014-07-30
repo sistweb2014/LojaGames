@@ -1,6 +1,7 @@
-/dao/
 /hibernate.cfg.xml
+/.gitignore
+/controle/
+/dao/
 /negocio/
 /util/
 /vo/
-/controle/
