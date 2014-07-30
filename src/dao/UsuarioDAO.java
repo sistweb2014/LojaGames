@@ -22,7 +22,7 @@ public class UsuarioDAO extends DAO<UsuarioVO> {
 	}
 
 	public UsuarioVO getByLoginSenha(String login, String senha) {
-		Criteria c = SessionFactoryUtil.getInstance().openSession().createCriteria(this.getClass());
+		Criteria c = SessionFactoryUtil.getInstance().openSession().createCriteria(UsuarioVO.class);
 		
 		c.add(Restrictions.eq("login", login));
 		c.add(Restrictions.eq("senha", EncripitarSenha.encriptar(senha)));
