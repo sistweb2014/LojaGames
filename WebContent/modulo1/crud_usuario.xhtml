@@ -25,9 +25,10 @@
 			 				<p:separator/>	
 	
 								<h:outputLabel value="Senha"></h:outputLabel>
-			                    <p:inputText id="senha" label="Senha" value="#{usuarioControle.senha}"
-			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
-			                    </p:inputText>
+
+			                    <p:password id="senha" label="Senha" value="#{usuarioControle.senha}"
+			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório."/>
+
 			 				<p:separator/>	
 						</h:panelGrid>
 		 
@@ -67,10 +68,11 @@
 			 				<p:separator/>	
 	
 								<h:outputLabel value="Escolha uma senha"></h:outputLabel>
-			                    <p:inputText id="senha" label="Senha"
+								
+			                    <p:password id="senha" label="Senha"
 			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório."
-			                    value="#{usuarioControle.vo.senha}">
-			                    </p:inputText>
+			                    value="#{usuarioControle.vo.senha}" />
+
 			 				
 	
 								<h:outputLabel value="Digite a senha novamente"></h:outputLabel>

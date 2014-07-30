@@ -3,7 +3,9 @@ package vo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,17 @@ public class PedidoVO {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pedido")
 	private Long idPedido;
 	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private UsuarioVO usuario;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "pedido_jogo")
+	private List<JogoVO> jogos;
+	
+	@OneToOne
+	private PagamentoVO pagamento;
+	
 	private TipoPedido tipoPedido;
 	private Date dataPedido;
 	private  Double valorTotal;
@@ -35,17 +48,6 @@ public class PedidoVO {
 	public void setPagamento(PagamentoVO pagamento) {
 		this.pagamento = pagamento;
 	}
-
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private UsuarioVO usuario;
-	
-	@ManyToMany
-	@JoinTable(name = "pedido_jogo")
-	private List<JogoVO> jogos;
-	
-	@OneToOne
-	private PagamentoVO pagamento;
 	
 	public Long getIdPedido() {
 		return idPedido;

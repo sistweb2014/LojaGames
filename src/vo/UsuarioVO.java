@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -131,6 +130,12 @@ public class UsuarioVO {
 
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
+	}
+	
+	public void addJogos(List<JogoVO> jogos){
+		for (JogoVO jogo : jogos) {
+			this.jogos.add(jogo);
+		}
 	}
 	
 	@Override
