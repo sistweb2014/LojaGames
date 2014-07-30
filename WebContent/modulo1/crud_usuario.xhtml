@@ -19,17 +19,26 @@
 		 					<h1>Login</h1>
 		 					<h4>Inicie a sessão com uma conta existente na Purpose.</h4>
 			                    <h:outputLabel value="Nome de usuário"></h:outputLabel>
-			                    <p:inputText id="nome" label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
+			                    <p:inputText id="nome" label="Nome" value="#{usuarioControle.login}"
+			                    required="true" requiredMessage="O Campo Nome é obrigatório.">
 			                    </p:inputText>
 			 				<p:separator/>	
 	
 								<h:outputLabel value="Senha"></h:outputLabel>
-			                    <p:inputText id="senha" label="Senha" required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
+			                    <p:inputText id="senha" label="Senha" value="#{usuarioControle.senha}"
+			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
 			                    </p:inputText>
 			 				<p:separator/>	
 						</h:panelGrid>
 		 
-		                <p:commandButton value="Logar"></p:commandButton>
+		                <p:commandButton
+		                		value="Logar"
+		                		update=":formLogin"
+		                		actionListener="#{usuarioControle.login}">
+		                </p:commandButton>
+		 				<br />
+		 					<h:message for="formLogin" style="color:red;"/>
+		 				<br />
 		         </h:form>
 		 	
 				
@@ -38,34 +47,58 @@
 		 					<h1>Criar uma Conta</h1>
 		 					<h4>O cadastro é gratuito e o programa é fácil de usar. 
 		 					Continue para criar a sua conta Purpose.</h4>
-			                    <h:outputLabel value="Criar um nome de usuário"></h:outputLabel>
-			                    <p:inputText id="nome" label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
+		 						
+		 						<br />
+		 							<h:message for="formCadastro" style="color:red;"/>
+		 						<br />
+			                    
+			                    <h:outputLabel value="Nome"></h:outputLabel>
+			                    <p:inputText id="nome" label="Nome"
+			                    required="true" requiredMessage="O Campo Nome é obrigatório."
+			                    value="#{usuarioControle.vo.nome}">
 			                    </p:inputText>
+			                    
+			                    <h:outputLabel value="Criar um nome de usuário"></h:outputLabel>
+			                    <p:inputText id="login" label="Login"
+			                    required="true" requiredMessage="O Campo Login é obrigatório."
+			                    value="#{usuarioControle.vo.login}">
+			                    </p:inputText>
+			                    
 			 				<p:separator/>	
 	
 								<h:outputLabel value="Escolha uma senha"></h:outputLabel>
-			                    <p:inputText id="senha" label="Senha" required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório.">
+			                    <p:inputText id="senha" label="Senha"
+			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório."
+			                    value="#{usuarioControle.vo.senha}">
 			                    </p:inputText>
 			 				
 	
 								<h:outputLabel value="Digite a senha novamente"></h:outputLabel>
-			                    <p:inputText id="novasenha" label="NovaSenha" required="true" requiredMessage="O Campo Digite a senha novamente é obrigatório.">
+			                    <p:inputText id="novasenha" label="NovaSenha"
+			                    required="true" requiredMessage="O Campo Digite a senha novamente é obrigatório.">
 			                    </p:inputText>
 			 				<p:separator/>	
 			 				
 								<h:outputLabel value="Seu endereço de e-mail"></h:outputLabel>
-			                    <p:inputText id="email" label="email" required="true" requiredMessage="O Campo Seu endereço de email é obrigatório.">
+			                    <p:inputText id="email" label="email"
+			                    required="true" requiredMessage="O Campo Seu endereço de email é obrigatório."
+			                    value="#{usuarioControle.vo.email}">
 			                    </p:inputText>
 			                    
 			                    <h:outputLabel value="Insira o e-mail novamente"></h:outputLabel>
-			                    <p:inputText id="email2" label="Email2" required="true" requiredMessage="O Campo Insira o e-mail novamente é obrigatório.">
+			                    <p:inputText id="email2" label="Email2"
+			                    required="true" requiredMessage="O Campo Insira o e-mail novamente é obrigatório.">
 			                    </p:inputText>
 			 				
 			                    
 			 				<p:separator/>	
 						</h:panelGrid>
 		 
-		                <p:commandButton value="Cadastrar"></p:commandButton>
+		                <p:commandButton
+		                	value="Cadastrar"
+		                	update=":formCadastro"
+		                	actionListener="#{usuarioControle.cadastrarUsuario}">
+		                	</p:commandButton>
 		         </h:form>
 			
 		  </h:panelGrid>		

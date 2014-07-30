@@ -1,6 +1,8 @@
 package vo;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -42,6 +44,14 @@ public class UsuarioVO {
 	private String email;
 	private Boolean estadoLogado;
 	private Double credito;
+	
+	public boolean validarEmail(String email) {
+		Pattern p = Pattern
+				.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+		Matcher m = p.matcher(email);
+
+		return m.find();
+	}
 
 	public List<UsuarioVO> getAmigos() {
 		return amigos;
