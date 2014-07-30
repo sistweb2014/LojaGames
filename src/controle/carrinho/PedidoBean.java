@@ -13,6 +13,7 @@ import vo.JogoVO;
 import vo.PedidoVO;
 import vo.UsuarioVO;
 import vo.enumerado.TipoPedido;
+import vo.excecao.UsuarioVOException;
 
 @ManagedBean
 @SessionScoped
@@ -43,12 +44,21 @@ public class PedidoBean {
 		
 		if(tipoPedido.equals(TipoPedido.COMPRA)) {
 			usuarioLogado.setJogos(jogos);
-			usuario.save(usuarioLogado);
+			try {
+				usuario.save(usuarioLogado);
+			} catch (UsuarioVOException e) {
+				e.printStackTrace();
+			}
 			
 		} else if(tipoPedido.equals(TipoPedido.PRESENTE)) {
 			usuarioPresenteado.setJogos(jogos);
-			usuario.save(usuarioPresenteado);
-			usuario.save(usuarioLogado);
+			try {
+				usuario.save(usuarioPresenteado);
+				usuario.save(usuarioLogado);
+			} catch (UsuarioVOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	
