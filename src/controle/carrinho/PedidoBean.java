@@ -36,6 +36,8 @@ public class PedidoBean {
 		usuarioPresenteado = new UsuarioVO();
 	}
 	
+	public String verCompra(){return "compra";};
+	public String verPresente(){return "presente";};
 	public void tipoCompra(){tipoPedido = "compra";}
 	public void tipoPresente(){tipoPedido = "presente";}
 	
