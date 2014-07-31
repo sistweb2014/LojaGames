@@ -57,6 +57,7 @@
 					</h:form>
 				</p:column >
 				<p:column rendered="${pedidoBean.tipoPedido eq pedidoBean.verPresente()}">
+					<h:inputText value="#{pedidoBean.usuarioPresenteado.nome}" rendered="#{not empty pedidoBean.usuarioPresenteado.nome}" />
 					<div style="width: 200px; height: 90px; overflow: auto;">
 						<h:dataTable value="#{pedidoBean.usuarioLogado.amigos}" var="a" border="2">
 							<h:column>
