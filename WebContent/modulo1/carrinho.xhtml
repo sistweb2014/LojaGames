@@ -26,7 +26,9 @@
 				
 				<p:column>
 					<f:facet name="header">Preço</f:facet>
-					#{jogo.preco}
+					<h:outputText value="#{jogo.preco}">
+						<f:convertNumber type="currency" currencySymbol="R$"/>
+					</h:outputText>
 				</p:column>
 				
 				<p:column>
@@ -35,6 +37,7 @@
 					</h:form>
 				</p:column>
 			</p:dataTable>
+			<br />
 			<p:dataTable value="#{pedidoBean.total}" var="4">
 				<p:columnGroup type="header">
 					<p:row>
@@ -48,18 +51,21 @@
 					</p:row>
 				</p:columnGroup>
 				<p:column>
-					<p:selectOneRadio value="#{pedidoBean.tipoPedido}" style="text-align: left;">
-						<f:selectItem itemLabel="Compra" itemValue="#{pedidoBean.tipoCompra}" />
-						<f:selectItem itemLabel="Presente" itemValue="#{pedidoBean.tipoPresente}"/>
-					</p:selectOneRadio>
+					<h:form>
+						<h:commandLink value="compra" action="#{pedidoBean.tipoCompra()}" /><br />
+						<h:commandLink value="presente" action="#{pedidoBean.tipoPresente()}" />
+					</h:form>
 				</p:column>
 				<p:column>
-					<p:selectOneListbox value="#{pedidoBean.usuarioPresenteado}" var="up">
-						<f:selectItems value="#{pedidoBean.usuarioLogado.amigos}" />
-						<p:column>
-							<h:outputText value="#{up.nome}" />
-						</p:column>
-					</p:selectOneListbox>
+					<div style="width: 200px; height: 90px; overflow: auto;">
+						<h:dataTable value="#{pedidoBean.usuarioLogado.amigos}" var="a" border="2">
+							<h:column>
+								<h:form>
+									<h:commandLink value="#{a.nome}" action="#{pedidoBean.atualizaUsuarioPresenteado(a)}" />
+								</h:form>
+							</h:column>
+						</h:dataTable>
+					</div>
 				</p:column>
 				<p:column>
 					<h:outputText value="#{pedidoBean.total}">
@@ -67,7 +73,7 @@
 					</h:outputText>
 				</p:column>
 				<p:column>
-					<p:commandButton value="finalizar pedido" />
+					<p:commandButton value="finalizar pedido" action="#{pedidoBean.finalizarPedido}"/>
 				</p:column>
 			</p:dataTable>
 		
