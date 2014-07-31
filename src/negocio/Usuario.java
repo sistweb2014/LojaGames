@@ -45,10 +45,6 @@ public class Usuario {
 		return vo;
 	}
 
-	public void deslogar(UsuarioVO vo) {
-		UsuarioDAO.getInstance().deslogar(vo);
-	}
-
 	public void delete(UsuarioVO vo) {
 		UsuarioDAO.getInstance().delete(vo);
 	}

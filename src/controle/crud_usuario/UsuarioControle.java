@@ -18,12 +18,10 @@ public class UsuarioControle {
 	private UsuarioVO vo;
 	private String login;
 	private String senha;
-	private boolean logou;
 
 	public UsuarioControle() {
 		usuario = new Usuario();
 		vo = new UsuarioVO();
-		logou = false;
 	}
 
 	public Usuario getUsuario() {
@@ -58,61 +56,49 @@ public class UsuarioControle {
 		this.senha = senha;
 	}
 
-	public boolean isLogou() {
-		return logou;
-	}
-
-	public void setLogou(boolean logou) {
-		this.logou = logou;
-	}
-
 	public String login(ActionEvent event) {
 		try {
 			vo = new UsuarioVO();
 			vo = usuario.getByLoginSenha(login, senha);
-			
+			vo.setEstadoLogado(true);
+			usuario.save(vo);
+
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(vo.getNome() + " Logado com sucesso!"));
+
 			
-			logou = true;
-			vo.setEstadoLogado(true);
-			
-			usuario.deslogar(vo);
+			return "perfil";
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(e.getMessage()));
 		}
-		return "/modulo2/perfil_m2";
+		return "perfil";
 	}
 
-	public String cadastrarUsuario(ActionEvent event) {
+	public void cadastrarUsuario(ActionEvent event) {
 		try {
-			vo = new UsuarioVO();
-				
 			vo.setEstadoLogado(true);
 			vo.setCredito(0.0d);
 			usuario.save(vo);
-			
+
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
 					new FacesMessage("Usuário Cadstrado com sucesso!"));
-			
-			logou = true;
-			vo.setEstadoLogado(true);
-			
-			usuario.deslogar(vo);
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
 					new FacesMessage(e.getMessage()));
 		}
-		return "/modulo2/perfil_m2";
 	}
-
-	public String deslogar() {
-		logou = false;
+	
+	public String deslogar(ActionEvent event) {
 		vo.setEstadoLogado(false);
-		usuario.deslogar(vo);
-		
-		return "/modulo1/crud_usuario";
+		try {
+			usuario.save(vo);
+			vo = new UsuarioVO();
+		} catch (UsuarioVOException e) {
+			FacesContext.getCurrentInstance().addMessage("formOut",
+					new FacesMessage(e.getMessage()));
+		}
+		return "crud_usuario";
 	}
 	
 	public void excluirUsuario() {
