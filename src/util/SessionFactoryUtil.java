@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import negocio.Pedido;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,12 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import vo.JogoVO;
-import vo.PagamentoVO;
-import vo.PedidoVO;
 import vo.UsuarioVO;
-import vo.enumerado.TipoPagamento;
-import vo.enumerado.TipoPedido;
 
 public class SessionFactoryUtil {
 
@@ -56,6 +49,7 @@ public class SessionFactoryUtil {
 	}
 
 	public static void main(String[] args) {
+
 		Session s = SessionFactoryUtil.getInstance().openSession();	
 		UsuarioVO usurio01 = new UsuarioVO();
 		usurio01.setNome("Nome01");
@@ -67,11 +61,12 @@ public class SessionFactoryUtil {
 		usuarios.add(usurio02);
 		
 		usurio01.setAmigos(usuarios);
+
 		
 		s.save(usurio01);
 		s.save(usurio02);
 		Transaction t = s.beginTransaction();
+		
 		t.commit();
-
 	}
 }

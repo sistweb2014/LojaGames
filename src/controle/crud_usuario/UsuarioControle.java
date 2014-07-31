@@ -69,6 +69,7 @@ public class UsuarioControle {
 
 	public void cadastrarUsuario(ActionEvent event) {
 		try {
+			vo.setCredito(1000.50);
 			usuario.save(vo);
 			vo = new UsuarioVO();
 			FacesContext.getCurrentInstance().addMessage("formCadastro",

@@ -15,3 +15,4 @@ public class UsuarioVOException extends Exception {
 	}
 	
 }
+

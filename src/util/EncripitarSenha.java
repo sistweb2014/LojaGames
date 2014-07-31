@@ -24,8 +24,6 @@ public class EncripitarSenha {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			return senha;
-			
-//			Olaaaaaaaaaaaaaaa mundooooo lokooo 
 		}
 	}
 	
