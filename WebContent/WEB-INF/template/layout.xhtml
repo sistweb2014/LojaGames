@@ -31,9 +31,11 @@
 								</li>
 								
 				        		<li>
-				        			<h:commandLink styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario">
+				        			<h:commandLink styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario" rendered="!#{usuario.logado}">
 				        				<h:outputText style="color: #FFFFFF;" value="Login/Cadastro" />
 				        			</h:commandLink>
+				        			
+				        			<h:outputText value="Olá #{usuarioControle.login}" rendered="#{usuario.logado}" />
 				        		</li>
 				        	</ul>
 						</div>

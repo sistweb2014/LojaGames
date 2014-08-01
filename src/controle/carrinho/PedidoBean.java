@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import negocio.Jogo;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import negocio.Pedido;
 import negocio.Usuario;
@@ -22,8 +19,6 @@ import vo.excecao.UsuarioVOException;
 @SessionScoped
 public class PedidoBean {
 	
-	
-
 	private PedidoVO pedidoVO = new PedidoVO();
 	private List<JogoVO> jogos = new ArrayList<JogoVO>();
 	
@@ -45,11 +40,17 @@ public class PedidoBean {
 		if (usuarioLogado.getCredito() > (total+jogo.getPreco())) {
 			total += jogo.getPreco();
 			jogos.add(jogo);
+
 		}else{
 			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
 					new FacesMessage("Crédito insuficiente para adicionar "+jogo.getNome()));
 		}
 		return "carrinho";
+
+//		}else{
+//			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
+//					new FacesMessage("Crï¿½dito insuficiente para adicionar "+jogo.getNome()));
+//		}
 	}
 	
 	public void removeJogo(JogoVO jogo){
@@ -74,11 +75,12 @@ public class PedidoBean {
 	public UsuarioVO getUsuarioLogado() {
 		return usuarioLogado;
 	}
+
 	public void definePresenteado(UsuarioVO usuario){
 		if (usuarioLogado.getAmigos() != null && usuario != null) {
 			usuarioPresenteado = usuario;
 		}else{
-			FacesContext.getCurrentInstance().addMessage("frmCarrinho", new FacesMessage("Você não tem amigos para presentear"));
+			FacesContext.getCurrentInstance().addMessage("frmCarrinho", new FacesMessage("Vocï¿½ nï¿½o tem amigos para presentear"));
 		}
 	}
 
@@ -128,6 +130,7 @@ public class PedidoBean {
 
 	public void setUsuario(UsuarioVO usuarioPresenteado) {
 		this.usuarioPresenteado = usuarioPresenteado;
+
 	}
 	
 	public UsuarioVO getUsuarioPresenteado() {
@@ -153,4 +156,5 @@ public class PedidoBean {
 	public void setTipoPedido(TipoPedido tipoPedido) {
 		this.tipoPedido = tipoPedido;
 	}
+
 }

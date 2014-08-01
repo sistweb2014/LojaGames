@@ -15,20 +15,20 @@ import vo.enumerado.TipoClassificacao;
 @Entity
 @SequenceGenerator(initialValue = 1, name = "seq_jogo", sequenceName = "seq_jogo")
 public class JogoVO {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_jogo")
 	private Long idJogo;
-	
+
 	private String nome;
 	private String genero;
 	private String imagem;
 	private Double preco;
 	private TipoClassificacao classificacao;
-	
+
 	@ManyToMany(mappedBy = "jogos", fetch = FetchType.LAZY)
 	private List<UsuarioVO> usuarios;
-	
+
 	@ManyToMany(mappedBy = "jogos", fetch = FetchType.LAZY)
 	private List<PedidoVO> pedidos;
 
@@ -95,16 +95,15 @@ public class JogoVO {
 	public void setUsuarios(List<UsuarioVO> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((idJogo == null) ? 0 : idJogo.hashCode());
+		result = prime * result + ((idJogo == null) ? 0 : idJogo.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

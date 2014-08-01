@@ -1,7 +1,6 @@
 package vo;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -56,7 +55,7 @@ public class PagamentoVO {
 	public void setTipoPagamento(TipoPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,7 +64,7 @@ public class PagamentoVO {
 				+ ((idPagamento == null) ? 0 : idPagamento.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

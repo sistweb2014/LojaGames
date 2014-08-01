@@ -49,7 +49,6 @@ public class SessionFactoryUtil {
 	}
 
 	public static void main(String[] args) {
-
 		Session s = SessionFactoryUtil.getInstance().openSession();	
 		UsuarioVO usurio01 = new UsuarioVO();
 		usurio01.setNome("Nome01");
@@ -59,14 +58,14 @@ public class SessionFactoryUtil {
 		
 		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
 		usuarios.add(usurio02);
-		
+
 		usurio01.setAmigos(usuarios);
 
 		
 		s.save(usurio01);
 		s.save(usurio02);
 		Transaction t = s.beginTransaction();
-		
+
 		t.commit();
 	}
 }
