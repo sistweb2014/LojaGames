@@ -12,7 +12,6 @@ import negocio.Usuario;
 import vo.JogoVO;
 import vo.PedidoVO;
 import vo.UsuarioVO;
-import vo.enumerado.TipoPedido;
 import vo.excecao.UsuarioVOException;
 
 @ManagedBean
@@ -25,16 +24,19 @@ public class PedidoBean {
 	@ManagedProperty(value="#{usuarioControle.vo}")
 	private UsuarioVO usuarioLogado;
 	private UsuarioVO usuarioPresenteado;
-	private TipoPedido tipoPedido;
+	private String tipoPedido;
 	private double total;
 	
 	public PedidoBean() {
 		total = 0;
-		tipoPedido = TipoPedido.COMPRA;
+		tipoPedido = "compra";
+		usuarioPresenteado = new UsuarioVO();
 	}
 	
-	public TipoPedido getTipoCompra(){return TipoPedido.COMPRA;}
-	public TipoPedido getTipoPresente(){return TipoPedido.PRESENTE;}
+	public String verCompra(){return "compra";};
+	public String verPresente(){return "presente";};
+	public void tipoCompra(){tipoPedido = "compra";}
+	public void tipoPresente(){tipoPedido = "presente";}
 	
 	public String adicionaJogo(JogoVO jogo) {
 		if (usuarioLogado.getCredito() > (total+jogo.getPreco())) {
@@ -63,7 +65,6 @@ public class PedidoBean {
 		pedidoVO.setUsuario(usuarioLogado);
 		pedidoVO.setJogos(jogos);
 		pedidoVO.setValorTotal(total);
-		pedidoVO.setTipoPedido(tipoPedido);
 		pedido.save(pedidoVO);
 		return "carrinho";
 	}
@@ -87,17 +88,20 @@ public class PedidoBean {
 	public String finalizarPedido() {
 		Usuario usuario = new Usuario();
 		try {
-			if(tipoPedido.equals(TipoPedido.COMPRA)) {
+			System.out.println("Finalizar Pedido");
+			System.out.println(tipoPedido.toString());
+			System.out.println(usuarioPresenteado.getNome());
+			if(tipoPedido == "compra") {
 				usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
 				usuarioLogado.addJogos(jogos);
 				usuario.save(usuarioLogado);
-			} else if(tipoPedido.equals(TipoPedido.PRESENTE)) {
+			} else if(tipoPedido == "presente") {
 				usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
 				usuarioPresenteado.addJogos(jogos);
 				usuario.save(usuarioPresenteado);
 				usuario.save(usuarioLogado);
 			}
-			return null;
+			return "perfil";
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(e.getMessage()));
 			return "carrinho";
@@ -137,7 +141,7 @@ public class PedidoBean {
 		return usuarioPresenteado;
 	}
 	
-	public void setUsuarioPresenteado(UsuarioVO usuarioPresenteado) {
+	public void atualizaUsuarioPresenteado(UsuarioVO usuarioPresenteado) {
 		this.usuarioPresenteado = usuarioPresenteado;
 	}
 
@@ -149,11 +153,11 @@ public class PedidoBean {
 		this.total = total;
 	}
 
-	public TipoPedido getTipoPedido() {
+	public String getTipoPedido() {
 		return tipoPedido;
 	}
 	
-	public void setTipoPedido(TipoPedido tipoPedido) {
+	public void setTipoPedido(String tipoPedido) {
 		this.tipoPedido = tipoPedido;
 	}
 

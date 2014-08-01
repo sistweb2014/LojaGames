@@ -10,30 +10,7 @@
 			<!-- Implementação do grupo -->
 			
 			<h1>INICIAL</h1>
-			<h:dataTable value="#{inicialControle.jogos}" rendered="#{not empty inicialControle.jogos}" var="jogo" border="2">
-				<f:facet name="header">Listagem dos jogos</f:facet>
-				
-				<h:column>
-					<f:facet name="header">ID do Jogo</f:facet>
-					#{jogo.idJogo}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					#{jogo.nome}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Preço</f:facet>
-					#{jogo.preco}
-				</h:column>
-				
-				<h:column>
-					<h:form>
-						<h:commandLink value="adicionar" action="#{pedidoBean.adicionaJogo(jogo)}" />
-					</h:form>
-				</h:column>
-			</h:dataTable>
+			
 			
 		</ui:define>
 	</ui:composition>
