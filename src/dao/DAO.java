@@ -20,6 +20,13 @@ public class DAO<VO> {
 
 	}
 	
+	public void update(VO vo) {
+		Session s = SessionFactoryUtil.getInstance().openSession();
+		Transaction t = s.beginTransaction();
+		s.update(vo);
+		t.commit();
+	}
+	
 	public void delete(VO vo) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
 		Transaction t = s.beginTransaction();

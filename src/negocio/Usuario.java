@@ -40,6 +40,10 @@ public class Usuario {
 		return vo;
 	}
 	
+	public void update(UsuarioVO vo) {
+		UsuarioDAO.getInstance().update(vo);
+	}
+	
 	public void delete(UsuarioVO vo) {
 		UsuarioDAO.getInstance().delete(vo);
 	}
