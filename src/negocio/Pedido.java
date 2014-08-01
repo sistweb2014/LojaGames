@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.List;
+
 import vo.PedidoVO;
 import dao.PedidoDAO;
 
@@ -8,6 +9,10 @@ public class Pedido {
 
 	public void save(PedidoVO vo) {
 		PedidoDAO.getInstance().save(vo);
+	}
+	
+	public void update(PedidoVO vo) {
+		PedidoDAO.getInstance().update(vo);
 	}
 	
 	public void delete(PedidoVO vo) {

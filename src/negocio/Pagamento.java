@@ -11,6 +11,10 @@ public class Pagamento {
 		PagamentoDAO.getInstance().save(vo);
 	}
 	
+	public void update(PagamentoVO vo) {
+		PagamentoDAO.getInstance().update(vo);
+	}
+	
 	public void delete(PagamentoVO vo) {
 		PagamentoDAO.getInstance().delete(vo);
 	}
