@@ -1,12 +1,17 @@
 package negocio;
 
 import java.util.List;
+
 import vo.JogoVO;
 import dao.JogoDAO;
 
 public class Jogo {
 
 	public void save(JogoVO vo) {
+		JogoDAO.getInstance().save(vo);
+	}
+	
+	public void update(JogoVO vo) {
 		JogoDAO.getInstance().save(vo);
 	}
 	

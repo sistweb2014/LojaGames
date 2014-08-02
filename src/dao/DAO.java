@@ -17,7 +17,7 @@ public class DAO<VO> {
 		Transaction t = s.beginTransaction();
 		s.merge(vo);
 		t.commit();
-
+		s.clear();
 	}
 	
 	public void delete(VO vo) {
@@ -25,6 +25,7 @@ public class DAO<VO> {
 		Transaction t = s.beginTransaction();
 		s.delete(vo);
 		t.commit();
+		s.clear();
 	}
 	
 	public VO getById(long id) {

@@ -2,10 +2,10 @@ package negocio;
 
 import java.util.List;
 
+import dao.UsuarioDAO;
 import util.EncripitarSenha;
 import vo.UsuarioVO;
 import vo.excecao.UsuarioVOException;
-import dao.UsuarioDAO;
 
 public class Usuario {
 
@@ -38,6 +38,10 @@ public class Usuario {
 			throw new UsuarioVOException(UsuarioVOException.LOGINFAIL);
 		
 		return vo;
+	}
+	
+	public void update(UsuarioVO vo) {
+		UsuarioDAO.getInstance().save(vo);
 	}
 	
 	public void delete(UsuarioVO vo) {

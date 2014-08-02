@@ -2,9 +2,10 @@ package vo;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import vo.enumerado.TipoPedido;
 
@@ -25,11 +28,25 @@ public class PedidoVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pedido")
 	private Long idPedido;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private UsuarioVO usuario;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "pedido_jogo")
+	private List<JogoVO> jogos;
+
+	@OneToOne
+	private PagamentoVO pagamento;
+
+	@Enumerated(EnumType.STRING)
 	private TipoPedido tipoPedido;
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPedido;
-	private  Double valorTotal;
-	
+	private Double valorTotal;
+
 	public PagamentoVO getPagamento() {
 		return pagamento;
 	}
@@ -38,17 +55,6 @@ public class PedidoVO {
 		this.pagamento = pagamento;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private UsuarioVO usuario;
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "pedido_jogo")
-	private List<JogoVO> jogos;
-	
-	@OneToOne
-	private PagamentoVO pagamento;
-	
 	public Long getIdPedido() {
 		return idPedido;
 	}
@@ -96,7 +102,7 @@ public class PedidoVO {
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,7 +111,7 @@ public class PedidoVO {
 				+ ((idPedido == null) ? 0 : idPedido.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -122,5 +128,5 @@ public class PedidoVO {
 			return false;
 		return true;
 	}
-	
+
 }

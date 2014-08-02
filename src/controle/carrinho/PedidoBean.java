@@ -74,27 +74,23 @@ public class PedidoBean {
 		}
 	}
 
-	public String finalizarPedido() {
+	public String finalizarPedido() throws UsuarioVOException {
 		Usuario usuario = new Usuario();
-		try {
-			System.out.println("Finalizar Pedido");
-			System.out.println(tipoPedido.toString());
-			System.out.println(usuarioPresenteado.getNome());
-			if(tipoPedido == "compra") {
-				usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
-				usuarioLogado.addJogos(jogos);
-				usuario.save(usuarioLogado);
-			} else if(tipoPedido == "presente") {
-				usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
-				usuarioPresenteado.addJogos(jogos);
-				usuario.save(usuarioPresenteado);
-				usuario.save(usuarioLogado);
-			}
-			return "perfil";
-		} catch (UsuarioVOException e) {
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(e.getMessage()));
-			return "carrinho";
+		if(tipoPedido == "compra") {
+			usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
+			usuarioLogado.addJogos(jogos);
+			usuario.update(usuarioLogado);
+		} else if(tipoPedido == "presente") {
+			usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
+			usuarioPresenteado.addJogos(jogos);
+			usuario.update(usuarioPresenteado);
+			usuario.update(usuarioLogado);
 		}
+		
+		jogos.clear();
+		total = 0;
+		
+		return "perfil";
 	}
 
 	public void setUsuarioLogado(UsuarioVO usuarioLogado) {

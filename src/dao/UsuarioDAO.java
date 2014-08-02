@@ -26,7 +26,7 @@ public class UsuarioDAO extends DAO<UsuarioVO> {
 		
 		c.add(Restrictions.eq("login", login));
 		c.add(Restrictions.eq("senha", EncripitarSenha.encriptar(senha)));
-		
-		return (UsuarioVO) c.uniqueResult();
+		UsuarioVO vo =(UsuarioVO) c.uniqueResult();
+		return vo;
 	}
 }

@@ -3,11 +3,15 @@ package vo;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import vo.enumerado.TipoPagamento;
 
@@ -19,7 +23,10 @@ public class PagamentoVO {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pagamento")
 	private Long idPagamento;
 
+	@Enumerated(EnumType.STRING)
 	private TipoPagamento tipoPagamento;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date datapagamento;
 
 	@OneToOne

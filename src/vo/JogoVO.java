@@ -3,6 +3,8 @@ package vo;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class JogoVO {
 	private String genero;
 	private String imagem;
 	private Double preco;
+	@Enumerated(EnumType.ORDINAL)
 	private TipoClassificacao classificacao;
 	
 	@ManyToMany(mappedBy = "jogos", fetch = FetchType.LAZY)
