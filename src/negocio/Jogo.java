@@ -12,7 +12,7 @@ public class Jogo {
 	}
 	
 	public void update(JogoVO vo) {
-		JogoDAO.getInstance().update(vo);
+		JogoDAO.getInstance().save(vo);
 	}
 	
 	public void delete(JogoVO vo) {

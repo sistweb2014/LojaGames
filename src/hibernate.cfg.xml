@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.password">postgre</property>
+        <property name="hibernate.connection.password">123</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/loja</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.default_schema">public</property>

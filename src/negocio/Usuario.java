@@ -41,7 +41,7 @@ public class Usuario {
 	}
 	
 	public void update(UsuarioVO vo) {
-		UsuarioDAO.getInstance().update(vo);
+		UsuarioDAO.getInstance().save(vo);
 	}
 	
 	public void delete(UsuarioVO vo) {

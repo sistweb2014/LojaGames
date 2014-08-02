@@ -3,13 +3,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:my="http://mytags/facelets"> 
 
 	<ui:composition template="../WEB-INF/template/layout.xhtml">
 		<ui:define name="template">
 			<!-- Implementação do grupo -->
 			
 			<h1>CARRINHO</h1>
+	
+			<my:foto imagem="fifa.jpg" legenda="teste" />
+			
+			<my:foto imagem="fifa.jpg" legenda="teste" />
 			
 			<p:dataTable value="#{pedidoBean.jogos}" rendered="#{not empty pedidoBean.jogos}" var="jogo" border="2">
 				<f:facet name="header">Listagem dos jogos</f:facet>

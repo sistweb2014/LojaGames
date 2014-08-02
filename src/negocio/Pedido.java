@@ -12,7 +12,7 @@ public class Pedido {
 	}
 	
 	public void update(PedidoVO vo) {
-		PedidoDAO.getInstance().update(vo);
+		PedidoDAO.getInstance().save(vo);
 	}
 	
 	public void delete(PedidoVO vo) {

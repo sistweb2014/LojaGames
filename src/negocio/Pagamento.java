@@ -12,7 +12,7 @@ public class Pagamento {
 	}
 	
 	public void update(PagamentoVO vo) {
-		PagamentoDAO.getInstance().update(vo);
+		PagamentoDAO.getInstance().save(vo);
 	}
 	
 	public void delete(PagamentoVO vo) {

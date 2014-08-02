@@ -36,7 +36,7 @@ public class PedidoBean {
 	public TipoPedido getTipoCompra(){return TipoPedido.COMPRA;}
 	public TipoPedido getTipoPresente(){return TipoPedido.PRESENTE;}
 	
-	public String adicionaJogo(JogoVO jogo) {
+	/*public String adicionaJogo(JogoVO jogo) {
 		if (usuarioLogado.getCredito() > (total+jogo.getPreco())) {
 			total += jogo.getPreco();
 			jogos.add(jogo);
@@ -51,7 +51,7 @@ public class PedidoBean {
 //			FacesContext.getCurrentInstance().addMessage("frmCarrinho", 
 //					new FacesMessage("Cr�dito insuficiente para adicionar "+jogo.getNome()));
 //		}
-	}
+	}*/
 	
 	public void removeJogo(JogoVO jogo){
 		jogos.remove(jogo);
