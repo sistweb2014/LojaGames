@@ -11,7 +11,7 @@ public class DAO<VO> {
 	public DAO(Class classe) {
 		this.classe = classe;
 	}
-	
+
 	public void save(VO vo) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
 		Transaction t = s.beginTransaction();
@@ -19,22 +19,22 @@ public class DAO<VO> {
 		t.commit();
 
 	}
-	
+
 	public void delete(VO vo) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
 		Transaction t = s.beginTransaction();
 		s.delete(vo);
 		t.commit();
 	}
-	
+
 	public VO getById(long id) {
-		return (VO) SessionFactoryUtil.getInstance()
-				.openSession().get(classe, id);
+		return (VO) SessionFactoryUtil.getInstance().openSession()
+				.get(classe, id);
 	}
-	
+
 	public List<VO> getAll() {
-		return SessionFactoryUtil.getInstance()
-				.openSession().createCriteria(classe).list();
+		return SessionFactoryUtil.getInstance().openSession()
+				.createCriteria(classe).list();
 	}
-	
+
 }

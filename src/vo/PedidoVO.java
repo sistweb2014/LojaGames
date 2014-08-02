@@ -25,22 +25,22 @@ public class PedidoVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pedido")
 	private Long idPedido;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private UsuarioVO usuario;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "pedido_jogo")
 	private List<JogoVO> jogos;
-	
+
 	@OneToOne
 	private PagamentoVO pagamento;
-	
+
 	private TipoPedido tipoPedido;
 	private Date dataPedido;
-	private  Double valorTotal;
-	
+	private Double valorTotal;
+
 	public PagamentoVO getPagamento() {
 		return pagamento;
 	}
@@ -48,7 +48,7 @@ public class PedidoVO {
 	public void setPagamento(PagamentoVO pagamento) {
 		this.pagamento = pagamento;
 	}
-	
+
 	public Long getIdPedido() {
 		return idPedido;
 	}
@@ -96,7 +96,7 @@ public class PedidoVO {
 	public void setJogos(List<JogoVO> jogos) {
 		this.jogos = jogos;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,7 +105,7 @@ public class PedidoVO {
 				+ ((idPedido == null) ? 0 : idPedido.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

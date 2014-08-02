@@ -1,6 +1,8 @@
 package dao;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import util.EncripitarSenha;
@@ -26,7 +28,7 @@ public class UsuarioDAO extends DAO<UsuarioVO> {
 
 		c.add(Restrictions.eq("login", login));
 		c.add(Restrictions.eq("senha", EncripitarSenha.encriptar(senha)));
-
+		
 		return (UsuarioVO) c.uniqueResult();
 	}
 
@@ -35,7 +37,7 @@ public class UsuarioDAO extends DAO<UsuarioVO> {
 				.createCriteria(UsuarioVO.class);
 
 		c.add(Restrictions.eq("email", usuario.getEmail()));
-
+		
 		return (UsuarioVO) c.uniqueResult();
 	}
 
@@ -44,7 +46,7 @@ public class UsuarioDAO extends DAO<UsuarioVO> {
 				.createCriteria(UsuarioVO.class);
 
 		c.add(Restrictions.eq("login", usuario.getNome()));
-
+		
 		return (UsuarioVO) c.uniqueResult();
 	}
 

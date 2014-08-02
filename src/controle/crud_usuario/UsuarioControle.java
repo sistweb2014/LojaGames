@@ -13,7 +13,6 @@ import vo.excecao.UsuarioVOException;
 @ManagedBean
 @SessionScoped
 public class UsuarioControle {
-
 	private Usuario usuario;
 	private UsuarioVO vo;
 	private String login;
@@ -57,22 +56,26 @@ public class UsuarioControle {
 	}
 
 	public String login(ActionEvent event) {
+		String url = "";
 		try {
 			vo = new UsuarioVO();
 			vo = usuario.getByLoginSenha(login, senha);
-			vo.setEstadoLogado(true);
-			usuario.save(vo);
+			
+			if (vo != null) {
+				vo.setEstadoLogado(true);
+				usuario.update(vo);
+			}
 
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(vo.getNome() + " Logado com sucesso!"));
-
 			
-			return "perfil";
+			return "/modulo2/perfil_m2.xhtml?faces-redirect=true";
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(e.getMessage()));
+			return "/modulo1/crud_usuario.xhtml?faces-redirect=true";
 		}
-		return "perfil";
+		
 	}
 
 	public void cadastrarUsuario(ActionEvent event) {
@@ -89,16 +92,13 @@ public class UsuarioControle {
 		}
 	}
 	
-	public String deslogar(ActionEvent event) {
+	public void deslogar(ActionEvent event) {
 		vo.setEstadoLogado(false);
-		try {
-			usuario.save(vo);
-			vo = new UsuarioVO();
-		} catch (UsuarioVOException e) {
-			FacesContext.getCurrentInstance().addMessage("formOut",
-					new FacesMessage(e.getMessage()));
-		}
-		return "crud_usuario";
+		
+		usuario.update(vo);
+		vo = new UsuarioVO();
+		
+		vo.setLogin("");
 	}
 	
 	public void excluirUsuario() {

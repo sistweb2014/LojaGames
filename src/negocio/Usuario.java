@@ -45,6 +45,10 @@ public class Usuario {
 		return vo;
 	}
 
+	public void update(UsuarioVO vo) {
+		UsuarioDAO.getInstance().save(vo);
+	}
+
 	public void delete(UsuarioVO vo) {
 		UsuarioDAO.getInstance().delete(vo);
 	}
@@ -58,4 +62,5 @@ public class Usuario {
 	public List<UsuarioVO> getAll() {
 		return UsuarioDAO.getInstance().getAll();
 	}
+
 }

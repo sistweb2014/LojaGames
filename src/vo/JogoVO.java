@@ -121,5 +121,4 @@ public class JogoVO {
 			return false;
 		return true;
 	}
-
 }
