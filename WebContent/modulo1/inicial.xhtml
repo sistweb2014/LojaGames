@@ -7,8 +7,7 @@
 
 	<ui:composition template="../WEB-INF/template/layout.xhtml">
 		<ui:define name="template">
-			<!-- Implementação do grupo -->
-			
+
 			<p:galleria id="galeria" value="#{inicialBean.listaJogos}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
     			<p:graphicImage library="img" name="#{image.imagem}" alt="#{image.nome}" title="TESTE" />
 			</p:galleria>
