@@ -56,7 +56,7 @@ public class UsuarioControle {
 		this.senha = senha;
 	}
 
-	public void login(ActionEvent event) {
+	public String login(ActionEvent event) {
 		try {
 			vo = usuario.getByLoginSenha(login, senha);
 			FacesContext.getCurrentInstance().addMessage("formLogin",
@@ -65,6 +65,8 @@ public class UsuarioControle {
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(e.getMessage()));
 		}
+		
+		return "perfil_m2";
 	}
 
 	public void cadastrarUsuario(ActionEvent event) {

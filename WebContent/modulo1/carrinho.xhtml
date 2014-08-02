@@ -16,72 +16,7 @@
 			
 			<my:foto imagem="fifa.jpg" legenda="teste" />
 			
-			<p:dataTable value="#{pedidoBean.jogos}" rendered="#{not empty pedidoBean.jogos}" var="jogo" border="2">
-				<f:facet name="header">Listagem dos jogos</f:facet>
-				
-				<p:column>
-					<f:facet name="header">ID do Jogo</f:facet>
-					#{jogo.idJogo}
-				</p:column>
-				
-				<p:column>
-					<f:facet name="header">Nome</f:facet>
-					#{jogo.nome}
-				</p:column>
-				
-				<p:column>
-					<f:facet name="header">Preço</f:facet>
-					<h:outputText value="#{jogo.preco}">
-						<f:convertNumber type="currency" currencySymbol="R$"/>
-					</h:outputText>
-				</p:column>
-				
-				<p:column>
-					<h:form>
-						<h:commandButton value="excluir" action="#{pedidoBean.removeJogo(jogo)}" />
-					</h:form>
-				</p:column>
-			</p:dataTable>
-			<br />
-			<p:dataTable value="#{pedidoBean.total}" var="4">
-				<p:columnGroup type="header">
-					<p:row>
-						<p:column colspan="1"></p:column>
-						<p:column colspan="1" rendered="${pedidoBean.tipoPedido eq pedidoBean.verPresente()}">
-							<f:facet name="header">Para</f:facet>
-						</p:column>
-						<p:column colspan="1">
-							<f:facet name="header">Total</f:facet>
-						</p:column>
-					</p:row>
-				</p:columnGroup>
-				<p:column style="width: 200px;">
-					<h:form>
-						<h:commandLink value="compra" action="#{pedidoBean.tipoCompra()}" /><br />
-						<h:commandLink value="presente" action="#{pedidoBean.tipoPresente()}" />
-					</h:form>
-				</p:column >
-				<p:column rendered="${pedidoBean.tipoPedido eq pedidoBean.verPresente()}">
-					<h:inputText value="#{pedidoBean.usuarioPresenteado.nome}" rendered="#{not empty pedidoBean.usuarioPresenteado.nome}" />
-					<div style="width: 200px; height: 90px; overflow: auto;">
-						<h:dataTable value="#{pedidoBean.usuarioLogado.amigos}" var="a" border="2">
-							<h:column>
-								<h:form>
-									<h:commandLink value="#{a.nome}" action="#{pedidoBean.atualizaUsuarioPresenteado(a)}" />
-								</h:form>
-							</h:column>
-						</h:dataTable>
-					</div>
-				</p:column>
-				<p:column style="width: 200px;">
-					<h:outputText value="#{pedidoBean.total}">
-						<f:convertNumber type="currency" currencySymbol="R$"/>
-					</h:outputText>
-				</p:column>
-				<p:column style="width: 200px;">
-					<p:commandButton value="finalizar pedido" action="#{pedidoBean.finalizarPedido}"/>
-				</p:column>
-			</p:dataTable>
+			
 		
 		</ui:define>
 	</ui:composition>

@@ -19,14 +19,13 @@ import vo.enumerado.TipoClassificacao;
 public class JogoVO {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_jogo")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_jogo")
 	private Long idJogo;
 	
 	private String nome;
 	private String genero;
 	private String imagem;
 	private Double preco;
-	
 	@Enumerated(EnumType.ORDINAL)
 	private TipoClassificacao classificacao;
 	
