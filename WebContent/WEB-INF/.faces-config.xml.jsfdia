@@ -139,6 +139,9 @@
    <PROCESS-ITEM-OUTPUT ID="inicial::modulo1#inicial.xhtml"
     NAME="output4" PATH="modulo1/inicial.xhtml"
     TARGET="rules:modulo1#inicial.xhtml" TITLE="inicial" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::modulo1#carrinho.xhtml"
+    NAME="output5" PATH="modulo1/carrinho.xhtml"
+    TARGET="rules:modulo1#carrinho.xhtml" TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:modulo1#carrinho.xhtml"

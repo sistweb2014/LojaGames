@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-
 import vo.enumerado.TipoClassificacao;
 
 @Entity
@@ -26,6 +25,7 @@ public class JogoVO {
 	private String genero;
 	private String imagem;
 	private Double preco;
+
 	@Enumerated(EnumType.ORDINAL)
 	private TipoClassificacao classificacao;
 	

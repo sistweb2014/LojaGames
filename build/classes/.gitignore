@@ -1,1 +1,8 @@
 /hibernate.cfg.xml
+/.gitignore
+/controle/
+/dao/
+/filter/
+/negocio/
+/util/
+/vo/

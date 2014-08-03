@@ -49,58 +49,40 @@
 		 					<h4>O cadastro é gratuito e o programa é fácil de usar. 
 		 					Continue para criar a sua conta Purpose.</h4>
 		 						
-		 						<br />
-		 							<h:message for="formCadastro" style="color:red;"/>
-		 						<br />
+	 							<br />
+				 					<h:message for="formCadastro" style="color:red;"/>
+				 				<br />
 			                    
-			                    <h:outputLabel value="Nome"></h:outputLabel>
+			                    <h:outputLabel value="Nome"/>
 			                    <p:inputText id="nome" label="Nome"
-			                    required="true" requiredMessage="O Campo Nome é obrigatório."
-			                    value="#{usuarioControle.vo.nome}">
-			                    </p:inputText>
+				                    required="true" requiredMessage="O Campo Nome é obrigatório."
+				                    value="#{usuarioControle.vo.nome}" />
 			                    
-			                    <h:outputLabel value="Criar um nome de usuário"></h:outputLabel>
+			                    <h:outputLabel value="Criar um nome de usuário"/>
 			                    <p:inputText id="login" label="Login"
-			                    required="true" requiredMessage="O Campo Login é obrigatório."
-			                    value="#{usuarioControle.vo.login}">
-			                    </p:inputText>
+				                    required="true" requiredMessage="O Campo Login é obrigatório."
+				                    value="#{usuarioControle.vo.login}" />
 			                    
 			 				<p:separator/>	
 	
-								<h:outputLabel value="Escolha uma senha"></h:outputLabel>
-								
-			                    <p:password id="senha" label="Senha"
-			                    required="true" requiredMessage="O Campo Escolha uma Senha é obrigatório."
-			                    value="#{usuarioControle.vo.senha}" />
-
-			 				
-	
-								<h:outputLabel value="Digite a senha novamente"></h:outputLabel>
-			                    <p:inputText id="novasenha" label="NovaSenha"
-			                    required="true" requiredMessage="O Campo Digite a senha novamente é obrigatório.">
-			                    </p:inputText>
+								<h:outputLabel value="Senha"/>
+			                    <p:password id="senha" value="#{usuarioControle.vo.senha}" required="true"
+			                    	feedback="true" promptLabel="Por favor preencha a senha"
+				                    weakLabel="Senha Fraca" goodLabel="Bom" strongLabel="Senha forte"/>
+			                    
 			 				<p:separator/>	
 			 				
-								<h:outputLabel value="Seu endereço de e-mail"></h:outputLabel>
-			                    <p:inputText id="email" label="email"
-			                    required="true" requiredMessage="O Campo Seu endereço de email é obrigatório."
-			                    value="#{usuarioControle.vo.email}">
-			                    </p:inputText>
-			                    
-			                    <h:outputLabel value="Insira o e-mail novamente"></h:outputLabel>
-			                    <p:inputText id="email2" label="Email2"
-			                    required="true" requiredMessage="O Campo Insira o e-mail novamente é obrigatório.">
-			                    </p:inputText>
-			 				
+								<h:outputLabel value="Seu endereço de e-mail" />
+			                    <p:inputText id="email" label="email" required="true"
+			                    	requiredMessage="O Campo Seu endereço de email é obrigatório."
+			                    	value="#{usuarioControle.vo.email}"/>
 			                    
 			 				<p:separator/>	
 						</h:panelGrid>
 		 
 		                <p:commandButton
-		                	value="Cadastrar"
-		                	update=":formCadastro"
-		                	actionListener="#{usuarioControle.cadastrarUsuario}">
-		                	</p:commandButton>
+		                	value="Cadastrar" update=":formCadastro"
+		                	actionListener="#{usuarioControle.cadastrarUsuario}" />
 		         </h:form>
 			
 		  </h:panelGrid>		
