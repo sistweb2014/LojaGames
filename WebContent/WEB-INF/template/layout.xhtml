@@ -32,12 +32,14 @@
 								</li>
 								
 				        		<li>
-				        			<h:commandLink styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario">
+				        			<h:commandLink rendered="#{!usuarioControle.vo.estadoLogado}" styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario">
 				        				<h:outputText style="color: #FFFFFF;" value="Login/Cadastro" />
 				        			</h:commandLink>
 				        			
-<!-- 				        			<rendered="#{!usuario.logado}"> -->
-				        			
+				        			<h:form id="formOut" rendered="#{usuarioControle.vo.estadoLogado}">
+											<p:commandButton value="Sair" update="formOut"
+								           		actionListener="#{usuarioControle.deslogar}" />
+									</h:form>
 				        		</li>
 				        	</ul>
 						</div>
