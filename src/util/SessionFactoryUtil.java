@@ -15,6 +15,7 @@ public class SessionFactoryUtil {
 	private static org.hibernate.SessionFactory sessionFactory;
 
 	private SessionFactoryUtil() {
+		
 	}
 
 	static {
