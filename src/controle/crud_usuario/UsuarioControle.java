@@ -1,8 +1,11 @@
 package controle.crud_usuario;
 
+import java.io.IOException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -55,27 +58,33 @@ public class UsuarioControle {
 		this.senha = senha;
 	}
 
-	public String login(ActionEvent event) {
-		String url = "";
+	public void login(ActionEvent event) {
 		try {
 			vo = new UsuarioVO();
 			vo = usuario.getByLoginSenha(login, senha);
+			FacesContext fc = FacesContext.getCurrentInstance();
+			ExternalContext ec = fc.getExternalContext();
 			
-			if (vo != null) {
+			if (vo != null && !vo.getEstadoLogado()) {
 				vo.setEstadoLogado(true);
 				usuario.update(vo);
+				
+				FacesContext.getCurrentInstance().addMessage("formLogin",
+						new FacesMessage(vo.getNome() + " Logado com sucesso!"));
+				ec.redirect("../modulo2/perfil_m2.jsf");
+			} else {
+				vo = null;
+				FacesContext.getCurrentInstance().addMessage("formLogin",
+						new FacesMessage("Usuário Logado no sistema"));
 			}
-
-			FacesContext.getCurrentInstance().addMessage("formLogin",
-					new FacesMessage(vo.getNome() + " Logado com sucesso!"));
-			
-			return "/modulo2/perfil_m2.xhtml?faces-redirect=true";
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formLogin",
 					new FacesMessage(e.getMessage()));
-			return "/modulo1/crud_usuario.xhtml?faces-redirect=true";
+		} catch (IOException e) {
+			FacesContext.getCurrentInstance().addMessage("formLogin",
+					new FacesMessage("Erro no redirecionamento aperte F5"));
 		}
-		
+
 	}
 
 	public void cadastrarUsuario(ActionEvent event) {
@@ -83,24 +92,40 @@ public class UsuarioControle {
 			vo.setEstadoLogado(true);
 			vo.setCredito(0.0d);
 			usuario.save(vo);
+			FacesContext fc = FacesContext.getCurrentInstance();
+			ExternalContext ec = fc.getExternalContext();
 
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
 					new FacesMessage("Usuário Cadstrado com sucesso!"));
+			ec.redirect("../modulo2/perfil_m2.jsf");
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
 					new FacesMessage(e.getMessage()));
+		} catch (IOException e) {
+			FacesContext.getCurrentInstance().addMessage("formCadastro",
+					new FacesMessage("Erro no redirecionamento aperte F5"));
 		}
 	}
-	
+
 	public void deslogar(ActionEvent event) {
 		vo.setEstadoLogado(false);
-		
+
 		usuario.update(vo);
 		vo = new UsuarioVO();
+
+		this.login = "";
+		this.senha = "";
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc.getExternalContext();
 		
-		vo.setLogin("");
+		try {
+			ec.redirect("../modulo1/crud_usuario.jsf");
+		} catch (IOException e) {
+			FacesContext.getCurrentInstance().addMessage("formOut",
+					new FacesMessage("Erro no redirecionamento aperte F5"));
+		}
 	}
-	
+
 	public void excluirUsuario() {
 		usuario.delete(vo);
 	}
