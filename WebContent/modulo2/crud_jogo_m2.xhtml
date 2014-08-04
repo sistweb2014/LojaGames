@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+	<ui:composition template="../WEB-INF/template/layout.xhtml">
+		<ui:define name="template">
+		
+			<p:layout style="min-width:400px;min-height:350px;margin-top:20px;margin-bottom:22px;" >
+		
+		    <p:layoutUnit position="west" width="200" header="Atividades"
+                          resizable="true" closable="true" collapsible="true">
+                          
+                <h:form id="frmMenu">
+                    <p:commandButton value="Novo Produto"
+                        actionListener="#{jogoBean.adicionaJogo}"
+                        update=":frmEdicaoJogo:infosJogo"
+                        oncomplete="PF('dialogGerJogo').show()" />
+                </h:form>
+                
+			</p:layoutUnit>
+		 
+		    <p:layoutUnit position="center">
+		        <h1>Gerenciador de Jogos</h1>
+                <br/>
+                <h:message for="frmTabelaJogo" style="color:red;"/>
+                <h:form id="frmTabelaJogo">
+                    <p:dataTable id="tabela" var="j"
+                                 value="#{jogoBean.jogos}">
+                                 
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo"/>
+                            </f:facet>
+                            <h:outputText value="#{j.idJogo}" />
+                        </p:column>         
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{j.nome}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Genero"/>
+                            </f:facet>
+                            <h:outputText value="#{j.genero}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Imagem"/>
+                            </f:facet>
+                            <h:outputText value="#{j.imagem}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Preco"/>
+                            </f:facet>
+                            <h:outputText value="#{j.preco}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Alterar"/>
+                            </f:facet>
+                            <p:commandButton
+                                actionListener="#{jogoBean.prepararAlterarJogo()}"
+                                value="Alterar" update=":frmEdicaoJogo:infosJogo"
+                                oncomplete="PF('dialogGerJogo').show()"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                           <p:commandButton actionListener="#{jogoBean.excluirJogo}"
+                                           value="Excluir"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+		    </p:layoutUnit>
+		</p:layout>
+		
+		 <p:dialog header="Gerencia de Jogos" widgetVar="dialogGerJogo"
+                  resizable="false" modal="true" showEffect="slide" width="500">
+                  
+            <h:form id="frmEdicaoJogo">
+            
+            	<h:message for="frmEdicaoJogo" style="color:red;"/>
+            	
+                <h:panelGrid id="infosJogo" columns="2" style="margin-bottom:10px">
+
+                    <h:outputLabel for="nome" value="Nome:" />
+                    <h:inputText id="nome" value="#{jogoBean.vo.nome}"/>
+
+                    <h:outputLabel for="genero" value="Genero:" />
+                    <h:inputText id="genero" value="#{jogoBean.vo.genero}"/>
+
+                    <h:outputLabel for="imagem" value="Imagem:" />
+                    <h:inputText id="imagem" value="#{jogoBean.vo.imagem}"/>
+                    
+                    <h:outputLabel for="preco" value="Preço:" />
+                    <h:inputText id="preco" value="#{jogoBean.vo.preco}"/>
+                   
+                    <p:commandButton update=":frmTabelaJogo:tabela,:frmEdicaoJogo"
+                                     actionListener="#{jogoBean.salvaJogo}"
+                                     value="Salvar Jogo" />
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+			
+		</ui:define>
+	</ui:composition>
+	
+</html>

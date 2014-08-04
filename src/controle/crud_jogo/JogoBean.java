@@ -20,8 +20,8 @@ import vo.excecao.JogoException;
 @SessionScoped
 public class JogoBean {
 	
-	@ManagedProperty("usuarioControle.vo")
-	private UsuarioVO usuarioVO;
+	/*@ManagedProperty("usuarioControle.vo")
+	private UsuarioVO usuarioVO;*/
 	
 	private JogoVO vo = new JogoVO();
 	private Jogo jogo = new Jogo();
@@ -70,8 +70,8 @@ public class JogoBean {
 
 	public String excluirJogo() {
 		//usuarioVO
-		List<JogoVO> listaJogos = usuarioVO.getJogos();
-		listaJogos.remove(jogo);
+		/*List<JogoVO> listaJogos = usuarioVO.getJogos();
+		listaJogos.remove(jogo);*/
 		
 		vo = jogos.getRowData();
 		System.out.println("TESTE" + vo.getNome());
