@@ -36,6 +36,9 @@
 		                		value="Logar"
 		                		update=":formLogin"
 		                		actionListener="#{usuarioControle.login}">
+		                		
+		                		<p:resetInput target="formLogin" />
+		                		
 		                </p:commandButton>
 		 				<br />
 		 					<h:message for="formLogin" style="color:red;"/>
@@ -82,7 +85,13 @@
 		 
 		                <p:commandButton
 		                	value="Cadastrar" update=":formCadastro"
-		                	actionListener="#{usuarioControle.cadastrarUsuario}" />
+		                	actionListener="#{usuarioControle.cadastrarUsuario}">
+		                	
+		                	<p:resetInput target="formCadastro" />
+		                </p:commandButton>
+		                
+		                
+		                
 		         </h:form>
 			
 		  </h:panelGrid>		

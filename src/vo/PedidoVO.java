@@ -30,15 +30,15 @@ public class PedidoVO {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pedido")
 	private Long idPedido;
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL,CascadeType.REMOVE})
 	@JoinColumn(name = "usuario_id")
 	private UsuarioVO usuario;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name = "pedido_jogo")
 	private List<JogoVO> jogos;
 
-	@OneToOne
+	@OneToOne(cascade={CascadeType.ALL,CascadeType.REMOVE})
 	private PagamentoVO pagamento;
 
 	@Enumerated(EnumType.STRING)

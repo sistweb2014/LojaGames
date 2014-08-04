@@ -2,6 +2,7 @@ package vo;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import vo.enumerado.TipoPagamento;
 
 @Entity
@@ -28,7 +30,7 @@ public class PagamentoVO {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datapagamento;
 
-	@OneToOne
+	@OneToOne(cascade={CascadeType.ALL,CascadeType.REMOVE})
 	private PedidoVO pedido;
 
 	public Long getIdPagamento() {

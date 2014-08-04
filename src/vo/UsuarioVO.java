@@ -24,15 +24,15 @@ public class UsuarioVO {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_usuario")
 	private Long idUsuario;
 	
-	@ManyToMany(targetEntity=JogoVO.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(name = "usuarios_jogos")
 	private List<JogoVO> jogos;
 	
-	@OneToMany(targetEntity=PedidoVO.class)
+	@OneToMany(cascade={CascadeType.ALL,CascadeType.REMOVE})
 	@JoinColumn(name="usuario_id")
 	private List<PedidoVO> pedidos;
 	
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.REMOVE})
 	@JoinTable(name="usuario_seguidores",joinColumns={@JoinColumn(name="idUsuario",referencedColumnName="idUsuario")},
 	inverseJoinColumns={@JoinColumn(name="idSeguidor",referencedColumnName="idUsuario")})
 	private List<UsuarioVO> amigos;

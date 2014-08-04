@@ -89,11 +89,11 @@ public class PedidoBean {
 		Usuario usuario = new Usuario();
 		if(tipoPedido == "compra") {
 			usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
-			usuarioLogado.addJogos(jogos);
+			//usuarioLogado.addJogos(jogos);
 			usuario.update(usuarioLogado);
 		} else if(tipoPedido == "presente") {
 			usuarioLogado.setCredito(usuarioLogado.getCredito() - total);
-			usuarioPresenteado.addJogos(jogos);
+			//usuarioPresenteado.addJogos(jogos);
 			usuario.update(usuarioPresenteado);
 			usuario.update(usuarioLogado);
 		}
