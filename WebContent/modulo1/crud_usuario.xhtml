@@ -41,9 +41,22 @@
 		 					<h:message for="formLogin" style="color:red;"/>
 		 				<br />
 		         </h:form>
-		 	
-				
+		 		
 		        <h:form id="formCadastro">
+		        	
+		        	<p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+					    <f:facet name="start">
+					        <p:graphicImage value="../resources/img/loading.gif" />
+					    </f:facet>
+					</p:ajaxStatus>
+					 
+					<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+					 
+					<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+							closable="false" resizable="false" showHeader="false">
+					    <p:graphicImage value="../resources/img/loading.gif" />
+					</p:dialog>
+		        	
 		           <h:panelGrid columns="1" id="Cadastro">
 		 					<h1>Criar uma Conta</h1>
 		 					<h4>O cadastro é gratuito e o programa é fácil de usar. 
