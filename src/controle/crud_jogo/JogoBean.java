@@ -20,15 +20,15 @@ import controle.crud_usuario.UsuarioControle;
 @SessionScoped
 public class JogoBean {
 
-	HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+	/*HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 			.getExternalContext().getSession(true);
 	UsuarioControle c = (UsuarioControle) session
 			.getAttribute("usuarioControle");
+	UsuarioVO voUsuario = c.getVo();*/
 	Usuario usuarioDB = new Usuario();
-	UsuarioVO voUsuario = c.getVo();
-	List<JogoVO> listaJogo = voUsuario.getJogos();
+	UsuarioVO usuarioVO = usuarioDB.getById(1);
+	List<JogoVO> listaJogo = usuarioVO.getJogos();
 	private JogoVO vo = new JogoVO();
-	//private Jogo jogo = new Jogo();
 	private DataModel<JogoVO> jogos;
 
 	public DataModel<JogoVO> getJogos() {
@@ -63,10 +63,9 @@ public class JogoBean {
 
 	public void salvaJogo(ActionEvent evt) {
 		try {
+			listaJogo.add(vo);
+			usuarioDB.update(usuarioVO);
 			vo = new JogoVO();
-			System.out.println("NOME VO: " + vo.getNome());
-			/*listaJogo.add(vo);
-			usuarioDB.update(voUsuario);*/
 			FacesContext.getCurrentInstance().addMessage("frmEdicaoJogo",
 					new FacesMessage("Jogo Salvo com Sucesso!"));
 		} catch (Exception e) {
@@ -76,11 +75,9 @@ public class JogoBean {
 	}
 
 	public String excluirJogo() {
-		vo = jogos.getRowData();
-		List<JogoVO> listaUsuario = voUsuario.getJogos();
-		//listaUsuario.remove(vo);
+		listaJogo.remove(jogos.getRowData());
 		System.out.println("TESTE" + vo.getNome());
-		System.out.println("TESTEo2" + voUsuario.getNome());
+		System.out.println("TESTEo2" + usuarioVO.getNome());
 		// jogo.delete(vo);
 		
 		return null;
