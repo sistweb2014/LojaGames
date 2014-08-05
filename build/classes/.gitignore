@@ -1,7 +1,2 @@
 /hibernate.cfg.xml
-/vo
-/util
 /controle
-/negocio
-/filter
-/dao
