@@ -184,7 +184,7 @@ public class UsuarioControle {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "587");
 
-		Session s = Session.getDefaultInstance(props, new Authenticator() {
+		Session s = Session.getDefaultInstance(props, new SMTPAuthenticator() {
 		});
 
 		try {
