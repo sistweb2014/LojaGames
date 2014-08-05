@@ -13,7 +13,7 @@ private static JogoDAO dao;
 	// Singleton design pattern applied
 	public static JogoDAO getInstance() {
 		if (dao == null)
-			dao = new JogoDAO(UsuarioVO.class);
+			dao = new JogoDAO(JogoVO.class);
 		return dao;
 	}
 	

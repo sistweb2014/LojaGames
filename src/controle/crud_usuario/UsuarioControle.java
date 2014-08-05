@@ -8,7 +8,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
 import negocio.Usuario;
 import vo.UsuarioVO;
 import vo.excecao.UsuarioVOException;
@@ -69,6 +68,7 @@ public class UsuarioControle {
 				vo.setEstadoLogado(true);
 				usuario.update(vo);
 
+				addMensage("Usuário", vo.getNome() + " Logado com sucesso!");
 				ec.redirect("../modulo2/perfil_m2.jsf");
 			} else {
 				vo = null;
@@ -87,12 +87,14 @@ public class UsuarioControle {
 
 	public void cadastrarUsuario(ActionEvent event) {
 		try {
+
 			vo.setEstadoLogado(true);
 			vo.setCredito(0.0d);
 			usuario.save(vo);
 			FacesContext fc = FacesContext.getCurrentInstance();
 			ExternalContext ec = fc.getExternalContext();
 
+			addMensage("Usuário", "Usuário Cadastrado com sucesso!");
 			ec.redirect("../modulo2/perfil_m2.jsf");
 		} catch (UsuarioVOException e) {
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
@@ -105,8 +107,8 @@ public class UsuarioControle {
 
 	public void deslogar(ActionEvent event) {
 		vo.setEstadoLogado(false);
-		usuario.update(vo);
 
+		usuario.update(vo);
 		vo = new UsuarioVO();
 
 		this.login = "";
@@ -115,6 +117,7 @@ public class UsuarioControle {
 		ExternalContext ec = fc.getExternalContext();
 
 		try {
+			addMensage("Usuário", "Usuário Desconectado com sucesso!");
 			ec.redirect("../modulo1/crud_usuario.jsf");
 		} catch (IOException e) {
 			FacesContext.getCurrentInstance().addMessage("formOut",
@@ -124,6 +127,12 @@ public class UsuarioControle {
 
 	public void excluirUsuario() {
 		usuario.delete(vo);
+	}
+
+	private void addMensage(String sumario, String detalhes) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+				sumario, detalhes);
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 }

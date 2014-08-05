@@ -17,15 +17,25 @@ public class DAO<VO> {
 		Transaction t = s.beginTransaction();
 		s.merge(vo);
 		t.commit();
-
+		s.clear();
 	}
-
+	
 	public void delete(VO vo) {
 		Session s = SessionFactoryUtil.getInstance().openSession();
 		Transaction t = s.beginTransaction();
 		s.delete(vo);
 		t.commit();
+		s.clear();
 	}
+	
+	/*public void deletes(VO vo) {
+		Session session = SessionFactoryUtil.getInstance().openSession();
+		Load load = session.get;
+
+		load.getSessions().remove(session);
+		session.getLoads().remove(load);
+		loadDao.saveObject(load);
+	}*/
 
 	public VO getById(long id) {
 		return (VO) SessionFactoryUtil.getInstance().openSession()

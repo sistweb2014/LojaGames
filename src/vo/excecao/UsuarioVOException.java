@@ -2,7 +2,7 @@ package vo.excecao;
 
 @SuppressWarnings("serial")
 public class UsuarioVOException extends Exception {
-	
+
 	public static final String NOMEOBRIGATORIO = "Nome é de preenchimento obrigatório";
 	public static final String LOGINOBRIGATORIO = "Login é de preenchimento obrigatório";
 	public static final String EMAILOBRIGATORIO = "E-mail é de preenchimento obrigatório";
@@ -15,6 +15,5 @@ public class UsuarioVOException extends Exception {
 	public UsuarioVOException(String msg) {
 		super(msg);
 	}
+
 }
-
-

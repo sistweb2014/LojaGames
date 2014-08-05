@@ -3,13 +3,20 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pro="http://mytag/promocao"> 
 
-	<ui:composition template="../WEB-INF/template/layout.xhtml">
+	<ui:composition template="../WEB-INF/template/layout-logado.xhtml">
 		<ui:define name="template">
-			<!-- Implementação do grupo -->
+			<h:panelGrid id="galeria" columns="2">
 			
-			<h1>INICIAL_M2</h1>
+				<p:galleria value="#{inicialBean.listaJogos}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+    				<p:graphicImage library="img" name="#{image.imagem}" alt="#{image.nome}" title="TESTE" />
+				</p:galleria>
+			
+				<pro:promocao titulo="Promoção do mês" imagem="titanfall.jpg" legenda="Compre já" />
+				
+			</h:panelGrid>
 			
 		</ui:define>
 	</ui:composition>

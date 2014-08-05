@@ -3,39 +3,20 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:my="http://mytags/facelets"> 
 
 	<ui:composition template="../WEB-INF/template/layout.xhtml">
 		<ui:define name="template">
 			<!-- Implementação do grupo -->
 			
 			<h1>CARRINHO</h1>
+	
+			<my:foto imagem="fifa.jpg" legenda="teste" />
 			
-			<h:dataTable value="#{pedidoBean.jogos}" rendered="#{not empty pedidoBean.jogos}" var="jogo" border="2">
-				<f:facet name="header">Listagem dos jogos</f:facet>
-				
-				<h:column>
-					<f:facet name="header">ID do Jogo</f:facet>
-					#{jogo.idJogo}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					#{jogo.nome}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Preço</f:facet>
-					#{jogo.preco}
-				</h:column>
-				
-				<h:column>
-					<h:form>
-						<h:commandLink value="excluir" action="#{pedidoBean.removeJogo(jogo)}" />
-					</h:form>
-				</h:column>
-			</h:dataTable>
-				Total: #{pedidoBean.total}
+			<my:foto imagem="fifa.jpg" legenda="teste" />
+			
+			
 		
 		</ui:define>
 	</ui:composition>

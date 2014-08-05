@@ -27,14 +27,14 @@
 						<div class="extras">
 							<ul>
 								<li>
-									<h:commandLink update="growl" action="carrinho">
+									<h:commandLink update="growl" action="carrinho_m2">
 										<h:graphicImage library="img" name="cart.gif" />
 									<h:outputText value="Item" />
 									</h:commandLink>
 								</li>
 								
 				        		<li>
-				        			<h:commandLink rendered="#{!usuarioControle.vo.estadoLogado}" styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario">
+				        			<h:commandLink rendered="#{!usuarioControle.vo.estadoLogado}" styleClass="btn btn-default btn-xs" Supdate="growl" action="crud_usuario_m2">
 				        				<h:outputText style="color: #FFFFFF;" value="Login/Cadastro" />
 				        				
 				        			</h:commandLink>
@@ -60,27 +60,27 @@
 							
 							<li>
 								<!-- Página Inicial -->
-								<h:commandLink value="Home" action="inicial" />
+								<h:commandLink value="Home" action="inicial_m2" />
 							</li>
 							
 							<li>
 								<!-- Página Perfil de Usuário -->
-								<h:commandLink value="Perfil do Usuário" action="perfil" />
+								<h:commandLink value="Perfil do Usuário" action="perfil_m2" />
 							</li>
 							
 							<li>
 								<!-- Página Cadastro de Jogo -->
-								<h:commandLink value="Cadastro do Jogo" action="crud_jogo" />
+								<h:commandLink value="Cadastro do Jogo" action="crud_jogo_m2" />
 							</li>
 							
 							<li>
 								<!-- Página Compra de Jogo -->
-								<h:commandLink value="Compra do Jogo" action="compra" />
+								<h:commandLink value="Compra do Jogo" action="compra_m2" />
 							</li>
 							
 							<li>
 								<!-- Página Presentear Jogo -->
-								<h:commandLink value="Presentear Jogo" action="presente" />
+								<h:commandLink value="Presentear Jogo" action="presente_m2" />
 							</li>
 						</ul>
 					</nav>

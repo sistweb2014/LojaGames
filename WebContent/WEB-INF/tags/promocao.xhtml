@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition>
+		<h:outputStylesheet library="css" name="imagem.css" />
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		
+		<h:panelGrid styleClass="tag-promocao" columns="1" >
+			<f:facet name="header">
+				<h:outputText styleClass="titulo" value="#{titulo}" />
+			</f:facet>
+			
+			<h:graphicImage styleClass="img-promocao" library="img" name="#{imagem}" />
+			
+			<f:facet name="footer">
+				<h:outputText  styleClass="legenda-library" value="#{legenda}" />
+			</f:facet>
+		</h:panelGrid>
+		
+	</ui:composition>
+</html>

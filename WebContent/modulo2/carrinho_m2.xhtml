@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+	<ui:composition template="../WEB-INF/template/layout-logado.xhtml">
+		<ui:define name="template">
+			<!-- Implementação do grupo -->
+			
+			<h1 style="text-align: center;">CARRINHO</h1>
+			
+			<p:dataTable value="#{pedidoBean.jogos}" rendered="#{not empty pedidoBean.jogos}" var="jogo" border="2">
+				<f:facet name="header">Listagem dos jogos</f:facet>
+				
+				<p:column>
+					<f:facet name="header">ID do Jogo</f:facet>
+					#{jogo.idJogo}
+				</p:column>
+				
+				<p:column>
+					<img alt="imagem" src="#{jogo.imagem}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{jogo.nome}
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Gênero</f:facet>
+					#{jogo.genero}
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Classificação</f:facet>
+					<p:rating value="4" readonly="true" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Preço</f:facet>
+					<h:outputText value="#{jogo.preco}">
+						<f:convertNumber type="currency" currencySymbol="R$"/>
+					</h:outputText>
+				</p:column>
+				
+				<p:column>
+					<h:form>
+						<h:commandButton value="excluir" action="#{pedidoBean.removeJogo(jogo)}" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+			<br />
+			<p:dataTable value="#{pedidoBean.total}" var="4">
+				<p:columnGroup type="header">
+					<p:row>
+						<p:column colspan="1"></p:column>
+						<p:column colspan="1" rendered="${pedidoBean.tipoPedido eq pedidoBean.verPresente()}">
+							<f:facet name="header">Para</f:facet>
+						</p:column>
+						<p:column colspan="1">
+							<f:facet name="header">Total</f:facet>
+						</p:column>
+					</p:row>
+				</p:columnGroup>
+				<p:column style="width: 200px;">
+					<h:form>
+						<h:commandLink value="compra" action="#{pedidoBean.tipoCompra()}" /><br />
+						<h:commandLink value="presente" action="#{pedidoBean.tipoPresente()}" />
+					</h:form>
+				</p:column >
+				<p:column rendered="${pedidoBean.tipoPedido eq pedidoBean.verPresente()}">
+					<h:inputText value="#{pedidoBean.usuarioPresenteado.nome}" rendered="#{not empty pedidoBean.usuarioPresenteado.nome}" />
+					<div style="width: 200px; height: 90px; overflow: auto;">
+						<h:dataTable value="#{pedidoBean.usuarioLogado.amigos}" var="a" border="2">
+							<h:column>
+								<h:form>
+									<h:commandLink value="#{a.nome}" action="#{pedidoBean.atualizaUsuarioPresenteado(a)}" />
+								</h:form>
+							</h:column>
+						</h:dataTable>
+					</div>
+				</p:column>
+				<p:column style="width: 200px;">
+					<h:outputText value="#{pedidoBean.total}">
+						<f:convertNumber type="currency" currencySymbol="R$"/>
+					</h:outputText>
+				</p:column>
+				<p:column style="width: 200px;">
+					<p:commandButton value="finalizar pedido" action="#{pedidoBean.finalizarPedido}"/>
+				</p:column>
+			</p:dataTable>
+		
+		</ui:define>
+	</ui:composition>
+	
+</html>

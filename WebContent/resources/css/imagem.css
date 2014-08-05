@@ -1,0 +1,42 @@
+.galeria {
+	margin: 5px;
+    padding: 5px;
+}
+
+.img-library {
+    margin: 5px;
+    padding: 5px;
+    height: 100px;
+}
+
+.legenda-library {
+	margin: 5px;
+    padding: 5px;
+    color: #000000;
+}
+
+.titulo {
+	margin: 5px;
+    padding: 5px;
+    font-size: 150%;
+    color: #ffffff;
+}
+
+.componente-galeria {
+	display: inline;
+}
+
+.img-promocao {
+    margin: 5px;
+    padding: 5px;
+    height: 250px;
+    width: 300px;
+}
+
+.tag-promocao {
+	background-color: #363636;
+	border-radius: 5px;
+	box-shadow: 3px 3px #828282;
+	padding: 20px;
+	margin: 20px;
+}
