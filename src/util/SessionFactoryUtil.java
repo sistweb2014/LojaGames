@@ -1,20 +1,16 @@
 package util;
 
 import java.util.List;
-
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
 import negocio.Jogo;
 import negocio.Usuario;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
 import controle.crud_usuario.UsuarioControle;
 import vo.JogoVO;
 import vo.UsuarioVO;
@@ -149,7 +145,5 @@ public class SessionFactoryUtil {
 		jogos.add(jogoVO);
 		
 		usuarioDB.update(voUsuario);
-		
-		
 	}
 }
