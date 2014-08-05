@@ -2,6 +2,9 @@ package util;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import negocio.Jogo;
 import negocio.Usuario;
 
@@ -12,6 +15,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import controle.crud_usuario.UsuarioControle;
 import vo.JogoVO;
 import vo.UsuarioVO;
 import vo.excecao.UsuarioVOException;
@@ -134,18 +138,17 @@ public class SessionFactoryUtil {
 		s.save(usuario1);
 		s.save(usuario2);*/
 
-		Usuario usuario = new Usuario();
+		Usuario usuarioDB = new Usuario();
+		UsuarioVO voUsuario = usuarioDB.getById(13);
 		
-		UsuarioVO vo = usuario.getById(1);
+		List<JogoVO> jogos = voUsuario.getJogos();
+
+		JogoVO jogoVO = new JogoVO();			
+		jogoVO.setNome("Nome");
 		
-		List<JogoVO> jogos = vo.getJogos();
+		jogos.add(jogoVO);
 		
-		Jogo jogo = new Jogo();
-		JogoVO jogoVO = jogo.getById(53);			
-			
-		jogos.remove(jogoVO);
-		
-			usuario.update(vo);
+		usuarioDB.update(voUsuario);
 		
 		
 	}

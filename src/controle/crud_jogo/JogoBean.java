@@ -4,31 +4,35 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.servlet.http.HttpSession;
 
-import negocio.Jogo;
+import negocio.Usuario;
 import vo.JogoVO;
 import vo.UsuarioVO;
-import vo.excecao.JogoException;
+import controle.crud_usuario.UsuarioControle;
 
-@ManagedBean 
+@ManagedBean
 @SessionScoped
 public class JogoBean {
-	
-	/*@ManagedProperty("usuarioControle.vo")
-	private UsuarioVO usuarioVO;*/
-	
+
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+			.getExternalContext().getSession(true);
+	UsuarioControle c = (UsuarioControle) session
+			.getAttribute("usuarioControle");
+	Usuario usuarioDB = new Usuario();
+	UsuarioVO voUsuario = c.getVo();
+	List<JogoVO> listaJogo = voUsuario.getJogos();
 	private JogoVO vo = new JogoVO();
-	private Jogo jogo = new Jogo();
+	//private Jogo jogo = new Jogo();
 	private DataModel<JogoVO> jogos;
 
 	public DataModel<JogoVO> getJogos() {
-		jogos = new ListDataModel<JogoVO>(jogo.getAll());
+		jogos = new ListDataModel<JogoVO>(listaJogo);
 		return jogos;
 	}
 
@@ -58,24 +62,25 @@ public class JogoBean {
 
 	public void salvaJogo(ActionEvent evt) {
 		try {
-			jogo.save(vo);
 			vo = new JogoVO();
+			System.out.println("NOME VO: " + vo.getNome());
+			/*listaJogo.add(vo);
+			usuarioDB.update(voUsuario);*/
 			FacesContext.getCurrentInstance().addMessage("frmEdicaoJogo",
 					new FacesMessage("Jogo Salvo com Sucesso!"));
-		} catch (JogoException e) {
+		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage("frmEdicaoJogo",
 					new FacesMessage(e.getMessage()));
 		}
 	}
 
 	public String excluirJogo() {
-		//usuarioVO
-		/*List<JogoVO> listaJogos = usuarioVO.getJogos();
-		listaJogos.remove(jogo);*/
-		
 		vo = jogos.getRowData();
+		List<JogoVO> listaUsuario = voUsuario.getJogos();
+		//listaUsuario.remove(vo);
 		System.out.println("TESTE" + vo.getNome());
-			//jogo.delete(vo);
+		System.out.println("TESTEo2" + voUsuario.getNome());
+		// jogo.delete(vo);
 		return null;
 	}
 
