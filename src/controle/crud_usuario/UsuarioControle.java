@@ -109,7 +109,7 @@ public class UsuarioControle {
 
 	public void cadastrarUsuario(ActionEvent event) {
 		try {
-			vo.setEstadoLogado(true);
+			vo.setEstadoLogado(false);
 			vo.setCredito(0.0d);
 
 			String auxSenha = vo.getSenha() != null ? vo.getSenha() : "";
@@ -126,20 +126,18 @@ public class UsuarioControle {
 
 			sendEmail(vo.getEmail(), SMTP_AUTH_PWD, SMTP_AUTH_USER, "Purpose",
 					texto);
-
-			ec.redirect("../modulo2/perfil_m2.jsf");
+			
+			FacesContext.getCurrentInstance().addMessage("formCadastro",
+					new FacesMessage("Usuário Cadastrado com sucesso, verificar o e-mail: " + vo.getEmail()));
+			vo = new UsuarioVO();
+			login = "";
+			senha = "";
 		} catch (UsuarioVOException e) {
 			vo = new UsuarioVO();
 			login = "";
 			senha = "";
 			FacesContext.getCurrentInstance().addMessage("formCadastro",
 					new FacesMessage(e.getMessage()));
-		} catch (IOException e) {
-			vo = new UsuarioVO();
-			login = "";
-			senha = "";
-			FacesContext.getCurrentInstance().addMessage("formCadastro",
-					new FacesMessage("Erro no redirecionamento aperte F5"));
 		}
 	}
 
