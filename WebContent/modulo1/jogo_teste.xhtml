@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Prime Faces</title>
+	<style type="text/css">
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 90%;
+}
+</style>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<p:messages id="messages" closable="true" />
+
+		<p:dataTable value="#{jogoBeanTeste.listaJogo}" var="j"
+			sortBy="#{j.idJogo}" resizableColumns="true"
+			selection="#{jogoBeanTeste.selectedJogo}" rowKey="#{j.idJogo}"
+			editable="true">
+
+			<p:ajax event="rowEdit" listener="#{jogoBeanTeste.onEdit}"
+				update=":form:messages" />
+			<p:ajax event="rowEditCancel" listener="#{jogoBeanTeste.onCancel}"
+				update=":form:messages" />
+
+			<f:facet name="header">Lista de Jogos</f:facet>
+
+			<p:column selectionMode="multiple" />
+
+			<p:column headerText="Id" sortBy="#{j.idJogo}" style="width: 10%">
+				<h:outputText value="#{j.idJogo}" />
+			</p:column>
+
+			<p:column headerText="Gênero" sortBy="#{j.genero}"
+				style="width: 15%">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{j.genero}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{j.genero}" style="width: 100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Imagem" sortBy="#{j.imagem}"
+				style="width: 20%">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{j.imagem}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{j.imagem}" style="width: 100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Nome" sortBy="#{j.nome}" style="width: 20%">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{j.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{j.nome}" style="width: 100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Preço" sortBy="#{j.preco}" style="width: 20%">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{d.preco}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{j.preco}" style="width: 100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column>
+				<p:rowEditor />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton value="Processar" action="#{jogoBeanTeste.processar}"
+			update="messages" />
+	</h:form>
+</h:body>
+
+
+</html>

@@ -63,7 +63,9 @@ public class JogoBean {
 
 	public void salvaJogo(ActionEvent evt) {
 		try {
-			listaJogo.add(vo);
+			if(!listaJogo.contains(vo))
+				listaJogo.add(vo);
+			
 			usuarioDB.update(usuarioVO);
 			vo = new JogoVO();
 			FacesContext.getCurrentInstance().addMessage("frmEdicaoJogo",
@@ -75,10 +77,9 @@ public class JogoBean {
 	}
 
 	public String excluirJogo() {
-		listaJogo.remove(jogos.getRowData());
-		System.out.println("TESTE" + vo.getNome());
-		System.out.println("TESTEo2" + usuarioVO.getNome());
-		// jogo.delete(vo);
+		JogoVO j = jogos.getRowData();
+		listaJogo.remove(j);
+		usuarioDB.update(usuarioVO);
 		
 		return null;
 	}
