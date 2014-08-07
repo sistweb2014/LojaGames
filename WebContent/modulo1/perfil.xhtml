@@ -7,9 +7,11 @@
 
 	<ui:composition template="../WEB-INF/template/layout.xhtml">
 		<ui:define name="template">
-			<!-- Implementação do grupo -->
+			<h:outputText value="USuarios" />
 			
-			<h1>PERFIL</h1>
+			<h:selectOneMenu value="#{perfilBean.listaUsuario}" var="u">
+				<f:selectItems itemValue="#{u.idUsuario}" itemLabel="#{u.nome}"/>
+			</h:selectOneMenu>
 			
 		</ui:define>
 	</ui:composition>

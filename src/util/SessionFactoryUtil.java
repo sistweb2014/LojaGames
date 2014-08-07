@@ -1,19 +1,24 @@
 package util;
 
 import java.util.List;
+
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
 import negocio.Jogo;
 import negocio.Usuario;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
 import controle.crud_usuario.UsuarioControle;
 import vo.JogoVO;
 import vo.UsuarioVO;
+import vo.excecao.JogoException;
 import vo.excecao.UsuarioVOException;
 
 public class SessionFactoryUtil {
@@ -54,7 +59,7 @@ public class SessionFactoryUtil {
 	public static void main(String[] args) {
 		
 		
-		/*UsuarioVO usuario1 = new UsuarioVO();
+		UsuarioVO usuario1 = new UsuarioVO();
 		usuario1.setLogin("root");
 		usuario1.setNome("Leonardo");
 		usuario1.setSenha("123");
@@ -94,23 +99,20 @@ public class SessionFactoryUtil {
 		jogo7.setImagem("fifa.jpg");
 		jogo7.setNome("Fifa 14");
 		
-		List<JogoVO> jogos = new ArrayList<JogoVO>();
-		jogos.add(jogo1);
-		jogos.add(jogo2);
-		jogos.add(jogo3);
-		jogos.add(jogo4);
+		Jogo jogo = new Jogo();
+		Usuario usuario = new Usuario();
 		
-		usuario1.setJogos(jogos);
+
+			jogo.update(jogo1);
+			jogo.update(jogo2);
+			jogo.update(jogo3);
+			jogo.update(jogo4);
+			jogo.update(jogo5);
+			jogo.update(jogo6);
 		
-		s.save(jogo1);
-		s.save(jogo2);
-		s.save(jogo3);
-		s.save(jogo4);
-		s.save(jogo5);
-		s.save(jogo6);
-		s.save(jogo7);
-		s.save(usuario1);
-		s.save(usuario2);*/
+			usuario.update(usuario1);
+			usuario.update(usuario2);
+		
 		
 		/*UsuarioVO usuario1 = new UsuarioVO();
 		usuario1.setNome("Teste01");
@@ -134,7 +136,7 @@ public class SessionFactoryUtil {
 		s.save(usuario1);
 		s.save(usuario2);*/
 
-		Usuario usuarioDB = new Usuario();
+		/*Usuario usuarioDB = new Usuario();
 		UsuarioVO voUsuario = usuarioDB.getById(13);
 		
 		List<JogoVO> jogos = voUsuario.getJogos();
@@ -144,6 +146,6 @@ public class SessionFactoryUtil {
 		
 		jogos.add(jogoVO);
 		
-		usuarioDB.update(voUsuario);
+		usuarioDB.update(voUsuario);*/
 	}
 }
